@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 
 const AwsForm = () => {
 
+    // get form data
     const [txtAccessKey, setAccessKey] = useState("")
     const [txtSecretAccessKey, setSecretAccessKey] = useState("")
     const [txtRegionID, setRegionID] = useState("US East (N. Virginia)")   // 默认值
