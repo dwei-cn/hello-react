@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    
+    <link href = "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>小马学React.js</title>
+</head>
+
+<body>
+    <div>
+        <div class="text-gray-600">
+            <header class="mb-5">
+                <div class="bg-gray-700 p-4 text-white">  小马学React.js </div>      
+            </header>
+
+            <main class = "container mx-auto">
+                <div id = "mainBody" class = "text-center text-3xl text-purple-800">
+                    加载中..zzz...
+                </div>
+
+                <div class = "text-center">
+                    <button class = "bg-green-400 rounded shadow-md text-white font-bold py-2 px-3 cursor-pointer" onclick="brn_onclick()">
+                    一个按钮
+                </button>
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+
+    <script>
+        // 启动加载
+        let dom = document.getElementById("mainBody");
+        let el = React.createElement("p", {}, "React 第一课");
+        ReactDOM.render(el, dom);  // 将之前的element覆盖掉
+
+        // 按钮加载
+        let brn_onclick = () =>{
+            let msg = "你好, React, 你已经入门了!"
+            let el = React.createElement("p", {}, msg);
+            ReactDOM.render(el, dom)
+        }
+        
+
+
+
+    </script>
+</body>
+</html>
