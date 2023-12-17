@@ -7,6 +7,10 @@ const Todolist = () => {
     const [items, setItems] = useState([])     // 注意 setItems 是一个函数，要传入state变化后新的值， items则是每次user输入的值
 
     const addItem = () => {
+
+        // 更新array，然后往setItems中传入新的item array
+
+
         //console.log(newItem)
         if (!newItem) {
             alert("Please enter a task")
@@ -21,7 +25,7 @@ const Todolist = () => {
 
         //setItems(items.concat(newItemObject))
         setItems(oldList => [...oldList, newItemObject])   // 传入更新updated items array, 作用和上面concat几乎一回事
-        setNewItem("")  // 传入值为默认值
+        setNewItem("")  // 每次click之后自动还原setNewItem为空
 
         console.log(items)
          
@@ -39,18 +43,23 @@ const Todolist = () => {
                 type="text" 
                 value={newItem}  
                 placeholder="Add a task" 
-                onChange = {e=>setNewItem(e.target.value)} // 没有onchange你是输入不了的，传入新的value
+                onChange = {e=>setNewItem(e.target.value)} // 没有onchange你是输入不了的，传入当前输入的value
             />
 
-            <button onClick={addItem}> Add a task </button>
+            <button onClick={addItem}> Add a task </button>  
 
             <ul>
-                {/* <li>Go to the gym</li>
-                <li>hung out with kobe</li>
-                <li>watch nba game</li> */}
-
                  {items.map((item) =>{
-                    return <li key={item.id}>{item.value}<button onClick={()=>deleteItem(item.id)}>❌</button></li> 
+                    return (
+                        <li key={item.id}>
+                            
+                            {item.value}
+
+                            <button onClick={()=>deleteItem(item.id)}>❌</button>
+
+                        </li> 
+                    )
+                    
                  })}
             </ul>
 
