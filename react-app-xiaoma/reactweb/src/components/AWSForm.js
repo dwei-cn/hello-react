@@ -3,11 +3,18 @@ import React, { Fragment, useState } from 'react';
 const AwsForm = (props) => {
 
     // get form data
-    const [txtAccessKey, setAccessKey] = useState(props.appdata.txtAccessKey);
+    const [txtAccessKey, setAccessKey] = useState(props.appdata.txtAccessKey);     // 注意 setAccessKey 是一个函数，要传入state变化后新的值
     const [txtSecretAccessKey, setSecretAccessKey] = useState(props.appdata.txtSecretAccessKey);
     const [txtRegionID, setRegionID] = useState(props.appdata.txtRegionID)   // 设定默认值
 
     // on change 之后更新原state的value
+    
+    // event： 这是一个事件对象，它包含有关事件的各种信息，例如事件的类型、触发事件的元素等。在这里，它代表输入框的变化事件。
+    // event.target： 这是触发事件的元素，即事件发生的目标。在这里，它是指输入框元素。
+    // event.target.value： 这是输入框的当前值。value 属性包含了用户在输入框中键入的文本。
+    // setSecretAccessKey(event.target.value)： 这一行代码使用 setSecretAccessKey 函数来更新组件中的状态，将输入框的当前值设置为新的 "Secret Access Key"。这样，当用户在输入框中键入文本时，React 将会根据用户输入来更新状态，以保持状态和输入框的同步。
+    // 总体而言，这段代码实现了一个输入框变化事件的处理函数，用于将输入框的当前值同步到 React 组件的状态中。
+
     const textAccessKey_onchange = (event) => {
         setAccessKey(event.target.value)
     }
