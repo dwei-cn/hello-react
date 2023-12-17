@@ -1,11 +1,13 @@
 // import logo from './logo.svg';
+
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 
 import Card1 from './components/Card1';
 import Card2 from './components/Card2';
 import Header from './components/Header';
 import AwsForm from './components/AWSForm';
+import Todolist from './components/Todolist';
 
 // function App() {
 //   return (
@@ -45,7 +47,6 @@ function App() {
     content: "This is a live blog feature for the Pokemon TCG.",
     link: "https://tcg.pokemon.com/en-us/tcgl/"
   },
-
 ]
 
   const listItems = dataList.map((itemData, index) =>   //  map 方法遍历一个名为 dataList 的数组，并为数组中的每个元素创建一个名为 ItemDetail2 的组件实例。
@@ -57,6 +58,38 @@ function App() {
     ItemLink = {itemData.link}
   />
   )
+
+  const [message, setMessage] = useState("Hello react form!");
+
+  const formData = {
+    txtAccessKey: "7758",
+    txtSecretAccessKey: "7758",
+    txtRegionID: "Asia Pacific"
+  }
+
+  const handlerAppDataEvent = async(appdata) => {
+    //console.log(appdata)
+    //alert(JSON.stringify(appdata))
+    const postdata = JSON.stringify({
+      accessKeyID: appdata.accessKeyID,
+      accessKeyIDSecret: appdata.accessKeyIDSecret,
+      selectRegionID: appdata.selectRegionID
+    })
+
+    const response = await fetch('http://localhost:3000/json', {
+      method: 'POST',
+      body: postdata,
+      headers: {
+        'content-type': 'application/json',
+        'user-agent': 'Mozilla/99.0 MDN Example'
+      },
+    });
+    
+    const data = await response.json()
+    setMessage(JSON.stringify(data.body, {}, 2))  // 整个表达式的目的是将 data.body 对象转换为带有缩进格式的 JSON 字符串，并且这个字符串会在每一层级使用两个空格进行缩进。这通常用于美化输出，以便更容易阅读和调试。
+  }
+
+
 
   return (
     <div className="App">
@@ -74,9 +107,16 @@ function App() {
 
       <hr />
        {/* <h2>Form 表单</h2> */}
-         <AwsForm />
-      
+        <AwsForm appdata={formData} onSave={handlerAppDataEvent}/>
+        <pre>
+          {message}
+        </pre>
+
+        <hr />
+        <h2>To-do List App</h2>
+        <Todolist />
     </div>
+    
   );
 }
 

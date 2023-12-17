@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
 
-const AwsForm = () => {
+const AwsForm = (props) => {
 
     // get form data
-    const [txtAccessKey, setAccessKey] = useState("")
-    const [txtSecretAccessKey, setSecretAccessKey] = useState("")
-    const [txtRegionID, setRegionID] = useState("US East (N. Virginia)")   // 默认值
+    const [txtAccessKey, setAccessKey] = useState(props.appdata.txtAccessKey);
+    const [txtSecretAccessKey, setSecretAccessKey] = useState(props.appdata.txtSecretAccessKey);
+    const [txtRegionID, setRegionID] = useState(props.appdata.txtRegionID)   // 设定默认值
 
     // on change 之后更新原state的value
     const textAccessKey_onchange = (event) => {
@@ -20,10 +20,16 @@ const AwsForm = () => {
         setRegionID(event.target.value)
     }
 
-    const btn_click = (event) => {
-        console.log("Access Key:", txtAccessKey)
-        console.log("Secret Access Key:", txtSecretAccessKey)
-        console.log("Region ID:", txtRegionID)
+    const btn_click = () => {
+        // console.log("Access Key:", txtAccessKey)
+        // console.log("Secret Access Key:", txtSecretAccessKey)
+        // console.log("Region ID:", txtRegionID)
+        props.onSave({
+            txtAccessKey: txtAccessKey,
+            txtSecretAccessKey: txtSecretAccessKey,
+            txtRegionID: txtRegionID
+        })
+
     }
 
 
@@ -34,12 +40,12 @@ const AwsForm = () => {
                 
                 <div className='mb-3 mt-3 mx-3'>
                     <label htmlFor='txtAccessKey' className='form-label'>Access Key</label>
-                    <input type = 'text' className='form-control' id='txtAccessKey' placeholder='123' value={txtAccessKey} onChange={textAccessKey_onchange} />
+                    <input type = 'text' className='form-control' id='txtAccessKey' value={txtAccessKey} onChange={textAccessKey_onchange} />
                 </div>
 
                 <div className='mb-3 mx-3'>
                     <label htmlFor='txtSecretAccessKey' className='form-label'>Secret Access Key</label>
-                    <input type = 'password' className='form-control' id='txtAccessKey' placeholder='123' value={txtSecretAccessKey} onChange={textSecretAccessKey_onchange} />
+                    <input type = 'password' className='form-control' id='txtAccessKey' value={txtSecretAccessKey} onChange={textSecretAccessKey_onchange} />
                 </div>
 
                 <div className='mb-3 mx-3'>
