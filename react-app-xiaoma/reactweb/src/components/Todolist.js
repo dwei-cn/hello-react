@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=-l0FEONO-cM
 // https://www.youtube.com/watch?v=TmDNBEdHzVs
 
-import React, { useState, useRef, Fragment } from 'react';
+import React, { useState, useRef, useEffect, Fragment } from 'react';
 
 
 const Todolist = () => {
@@ -14,7 +14,7 @@ const Todolist = () => {
     const [editStatus, setEditStatus] = useState(false)
     const [StyleFLG, setStyleFLG] = useState(true)
 
-    //const editInputRef = useRef(null);
+    const editInputRef = useRef(null);
 
     const addItem = () => {
 
@@ -56,11 +56,16 @@ const Todolist = () => {
         // Your edit button logic
         // Set focus to the edit input
         // 并且更新当前的edititem的id为click的item的id
-        //editInputRef.current.focus();
+
+        editInputRef.current?.focus(); // 在这个例子中，editInputRef.current 可能为 null 或 undefined，因此使用 ?. 可以确保在 editInputRef.current 不为 null 或 undefined 的情况下调用 focus 方法，而不会引发错误。如果直接使用 editInputRef.current.focus()，并且 editInputRef.current 为 null 或 undefined，就会导致运行时错误，通过 editInputRef.current?.focus() 确保一定不会出现空指针异常，这个时候useEffect就会产生作用，使得editInputRef.current.focus()开始生效
+
         console.log(item.id)
         setEditStatus(true)
         setEditItemID(item.id)
         setNewEditItem(item.value)
+
+
+
         setStyleFLG(!StyleFLG)
     };
 
@@ -83,7 +88,7 @@ const Todolist = () => {
 
         console.log(itemsArray)
     }
-
+    
     const resetArray = () => {
         setitemsArray([])
         setEditStatus(false)    // 直接reset Items array
@@ -91,6 +96,15 @@ const Todolist = () => {
     }
 
     const statusLight = StyleFLG ? '😇' : '🤢'
+
+    // 将 editInputRef.current.focus() 放在 useEffect 中是为了确保在 React 完成渲染并且 DOM 元素准备就绪后再执行设置焦点的操作。
+    useEffect(() => {    // 任何editStatus以及editInputRef.current不为null同时满足的时候执行editInputRef.current.focus()，将焦点设置到编辑输入框上。
+        if (editStatus && editInputRef.current) {
+            editInputRef.current.focus();
+            //console.log("editInputRef: ", editInputRef.current.value)  // 可以看到editInputRef.current现在的状态，应该就是input box的元素
+        }
+    }, [editStatus]);   // 就是指定监听editStatus，也就是一旦editStatus状态发生变化，useEffect就会发挥作用
+
 
 
     return (
@@ -115,9 +129,9 @@ const Todolist = () => {
                     <input
                         type="text"
                         value={newEditItem}
-                        placeholder='Edit a task, I’m not always here!'
+                        placeholder='Edit a task'
                         onChange={e => setNewEditItem(e.target.value)}
-                    //ref={editInputRef}
+                        ref={editInputRef}
                     />
                     <button onClick={() => editItem(editItemID)}> Complete! </button>
                 </div>
@@ -131,8 +145,8 @@ const Todolist = () => {
 
                             {item.value}
 
-                            <button className='edit-button ' onClick={() => openInputBox(item)}>✏</button>  {/* 光标跳转到input box，且传入id */}
-                            <button className='delete-button' nClick={() => deleteItem(item.id)}>❌</button>
+                            <button className='edit-button' onClick={() => openInputBox(item)}>✏</button>  {/* 光标跳转到input box，且传入id */}
+                            <button className='delete-button' onClick={() => deleteItem(item.id)}>❌</button>
 
                         </li>
                     )
