@@ -113,8 +113,14 @@ function App() {
       </pre>
 
       <hr />
-      <h2>To-do List App</h2>
-      <Todolist />
+
+      <div className="container">
+        <h2>To-do List App</h2>
+        <div className="todo-app">
+            <Todolist />
+        </div>
+      </div>
+      
     </div>
 
   );

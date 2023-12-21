@@ -41,8 +41,15 @@
   text-align: center;
 } */
 
+
 .li{
   margin:12 px 0px;
+  list-style:disc;
+  font-size: 15px;
+  padding: 10px 8px 12px 50px;
+  user-select:auto;
+  cursor: pointer;
+  text-decoration: line-through;
 }
 
 .edit-button {
@@ -63,4 +70,64 @@
   border-radius:4px;
   padding-top:4px;
   padding-bottom: 4px;
+}
+
+.complete-button {
+  font-size: 10px;
+  margin-left:8px;
+  border:none;
+  color:white;
+  border-radius:4px;
+  padding-top:4px;
+  padding-bottom: 4px;
+}
+
+/* *{
+  margin: 0;
+  padding: 0;
+ 
+} */
+
+.container {
+  width: 100%;
+  min-width: 100vh;
+  background: linear-gradient(135deg, #9fabc2, #0d6bb8);
+  padding: 10px;
+  border-radius:5px;
+}
+
+.todo-app{
+  width: 100%;
+  max-width:800px;
+  background: #ffffff;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius:10px;
+}
+
+.input{
+  width: 80%;
+  flex:1;
+  border:none;
+  outline: none;
+  background: #edeef0;
+  border-radius:10px;
+  margin: 10px auto 20px;
+  padding: 5px;
+  padding-left: 20px;
+
+}
+
+.add-update-btn{
+  border:none;
+  outline: none;
+  padding: 5px 15px;
+  background: #ff5945;
+  color:#fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
+  
+
+
 }

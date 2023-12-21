@@ -39,7 +39,9 @@ const Todolist = () => {
         }
 
         //setItems(items.concat(newItemObject))
-        setitemsArray(oldList => [...oldList, newItemObject])   // 传入更新updated items array, 作用和上面concat几乎一回事
+        setitemsArray(oldList => [...oldList, newItemObject])   // 加入newItemObject，并且传入更新updated items array, 作用和上面concat几乎一回事
+        // itemsArray.push(newItemObject)
+        // setitemsArray([...itemsArray]) 
         setNewItem("")  // 每次click之后自动还原setNewItem为空
 
         console.log(itemsArray)
@@ -88,7 +90,7 @@ const Todolist = () => {
 
         console.log(itemsArray)
     }
-    
+
     const resetArray = () => {
         setitemsArray([])
         setEditStatus(false)    // 直接reset Items array
@@ -108,18 +110,19 @@ const Todolist = () => {
 
 
     return (
-        <Fragment>
+        <div>
             <p className={StyleFLG ? 'text-light bg-info' : 'text-secondary bg-warning'}>
                 动画特效区域 当前状态: {statusLight}
             </p>
             <input
+                className = 'input'
                 type="text"
                 value={newItem}   // 当前输入值
                 placeholder="Please enter a task"
                 onChange={e => setNewItem(e.target.value)} // 没有onchange你是输入不了的，传入当前输入的value
             />
 
-            <button onClick={addItem}> Add a task </button>
+            <button className='add-update-btn' onClick={addItem}> Add a task </button>
 
 
             {/*只有在编辑状态下, 也就是当前editStatus不为false才会出现input box*/}
@@ -127,13 +130,14 @@ const Todolist = () => {
                 <div>
                     <div className='mt-2' />
                     <input
+                        className='input'
                         type="text"
                         value={newEditItem}
                         placeholder='Edit a task'
                         onChange={e => setNewEditItem(e.target.value)}
                         ref={editInputRef}
                     />
-                    <button onClick={() => editItem(editItemID)}> Complete! </button>
+                    <button className = 'add-update-btn' onClick={() => editItem(editItemID)}> Complete! </button>
                 </div>
             )}
 
@@ -141,12 +145,13 @@ const Todolist = () => {
             <ul>
                 {itemsArray.map((item) => {
                     return (
-                        <li key={item.id}>
+                        <li className='li' key={item.id}>
 
                             {item.value}
 
                             <button className='edit-button' onClick={() => openInputBox(item)}>✏</button>  {/* 光标跳转到input box，且传入id */}
                             <button className='delete-button' onClick={() => deleteItem(item.id)}>❌</button>
+                            <button className='complete-button' onClick={() => deleteItem(item.id)}>✔</button>
 
                         </li>
                     )
@@ -156,11 +161,11 @@ const Todolist = () => {
 
             {itemsArray.length !== 0 && (  // 只有当itemsArray有东西的时候才会出现
                 <div>
-                    < button onClick={resetArray}> 一键清空！💢 </button>
+                    < button className='add-update-btn' onClick={resetArray}> 一键清空！🚀 </button>
                 </div>
             )}
 
-        </Fragment >
+        </div >
 
     )
 
