@@ -35,7 +35,8 @@ const Todolist = () => {
         const newItemObject = {
 
             id: newID,
-            value: newItem
+            value: newItem,
+            isCompleted: false, // 添加 isCompleted 属性，并初始化为 false
         }
 
         //setItems(items.concat(newItemObject))
@@ -99,6 +100,20 @@ const Todolist = () => {
 
     const statusLight = StyleFLG ? '😇' : '🤢'
 
+    const toggleCompletion = (id) => {
+        const updatedArray = itemsArray.map(item => {
+            if (item.id === id) {
+                return { ...item, isCompleted: !item.isCompleted };
+            } else {
+                return item;
+            }
+
+        })
+
+        setitemsArray(updatedArray)
+        console.log("okay!")
+    };
+
     // 将 editInputRef.current.focus() 放在 useEffect 中是为了确保在 React 完成渲染并且 DOM 元素准备就绪后再执行设置焦点的操作。
     useEffect(() => {    // 任何editStatus以及editInputRef.current不为null同时满足的时候执行editInputRef.current.focus()，将焦点设置到编辑输入框上。
         if (editStatus && editInputRef.current) {
@@ -108,14 +123,13 @@ const Todolist = () => {
     }, [editStatus]);   // 就是指定监听editStatus，也就是一旦editStatus状态发生变化，useEffect就会发挥作用
 
 
-
     return (
         <div>
             <p className={StyleFLG ? 'text-light bg-info' : 'text-secondary bg-warning'}>
                 动画特效区域 当前状态: {statusLight}
             </p>
             <input
-                className = 'input'
+                className='input'
                 type="text"
                 value={newItem}   // 当前输入值
                 placeholder="Please enter a task"
@@ -137,7 +151,7 @@ const Todolist = () => {
                         onChange={e => setNewEditItem(e.target.value)}
                         ref={editInputRef}
                     />
-                    <button className = 'add-update-btn' onClick={() => editItem(editItemID)}> Complete! </button>
+                    <button className='add-update-btn' onClick={() => editItem(editItemID)}> Update! </button>
                 </div>
             )}
 
@@ -145,13 +159,17 @@ const Todolist = () => {
             <ul>
                 {itemsArray.map((item) => {
                     return (
-                        <li className='li' key={item.id}>
-
-                            {item.value}
+                        <li
+                            className={`li ${item.isCompleted ? 'completed' : ''}`}
+                            key={item.id}
+                        >
+                            <span style={{ textDecoration: item.isCompleted ? 'line-through' : 'none' }}>
+                                {item.value}
+                            </span>
 
                             <button className='edit-button' onClick={() => openInputBox(item)}>✏</button>  {/* 光标跳转到input box，且传入id */}
                             <button className='delete-button' onClick={() => deleteItem(item.id)}>❌</button>
-                            <button className='complete-button' onClick={() => deleteItem(item.id)}>✔</button>
+                            <button className='complete-button' onClick={() => toggleCompletion(item.id)}>✔</button>
 
                         </li>
                     )
@@ -168,8 +186,7 @@ const Todolist = () => {
         </div >
 
     )
-
-
 }
+
 
 export default Todolist;
