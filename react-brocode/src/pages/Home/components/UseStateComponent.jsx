@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 export default function UseStateComponent() {
-  const [name, setName] = useState("Guest");
-  const [newName, setNewName] = useState(name);    // newName的默认值直接就是name
+  const [nameDisplay, setNameDisplay] = useState("Guest");
+  const [newName, setNewName] = useState(nameDisplay); // newName的默认值直接就是name
   const [age, setAge] = useState(20);
   const [isNameEditing, setIsNameEditing] = useState(false);
 
@@ -11,44 +11,56 @@ export default function UseStateComponent() {
   };
 
   const saveNewName = () => {
-    setName(newName);
+    setNameDisplay(newName);
     setIsNameEditing(false);
   };
 
-  const resetName = () => {
-    setName("Guest");
+  const reset = () => {
+    setNameDisplay("Guest");
+    setNewName("Guest");
+    setAge(20);
   };
 
-  const IncAge = () => {
+  const incAge = () => {
     setAge(age + 1);
   };
 
-  const DecAge = () => {
+  const decAge = () => {
     setAge(age - 1);
   };
 
   return (
-    <div>
-      <p>Name: {name}</p>
-      <p>Age: {age}</p>
-      <button onClick={updateName}>Update Name</button>
+    <div className="counter-container">
+      <p className="count-display">Name: {nameDisplay}</p>
+      <p className="count-display">Age: {age}</p>
+      <button className="counter-button" onClick={updateName}>
+        Update Name
+      </button>
       {isNameEditing && (
         <div>
           <input
             type="text"
             placeholder="Please enter a name"
             value={newName}
-            onChange={(e) => setNewName(e.target.value)}
+            onChange={(e) => setNewName(e.target.value)} // change之后运行setNewName,设置新的newName为输入值
           />
-          <button onClick={saveNewName}>save</button>
+          <button className="counter-button" onClick={saveNewName}>
+            save
+          </button>
         </div>
       )}
-      <button onClick={resetName}>Reset</button>
 
       <div>
-        <button onClick={IncAge}>Younger</button>
-        <button onClick={DecAge}>Older</button>
+        <button className="counter-button" onClick={incAge}>
+          Younger
+        </button>
+        <button className="counter-button" onClick={decAge}>
+          Older
+        </button>
       </div>
+      <button className="counter-button" onClick={reset}>
+        Reset
+      </button>
     </div>
   );
 }
