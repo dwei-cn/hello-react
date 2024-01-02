@@ -3,6 +3,7 @@ import Footer from "./pages/Home/components/Footer";
 import Header from "./pages/Home/components/Header";
 import UserGreeting from "./pages/Home/components/UserGreeting";
 import UseStateComponent from "./pages/Home/components/UseStateComponent/";
+import ColorPicker from "./pages/Home/components/ColorPicker/";
 
 import Card from "./components/Card";
 import List from "./components/List";
@@ -62,7 +63,12 @@ export default function App() {
       <Button />
 
       <hr />
+      <h3>Delivery Info</h3>
       <UseStateComponent />
+
+      <hr />
+      <h3>Color Picker</h3>
+      <ColorPicker />
 
       <hr />
       <div ref={bottomRef} />

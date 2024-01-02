@@ -1,3 +1,7 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .card{
     border: 1px solid hsl(0, 0%, 71%);
     border-radius: 20px;
@@ -20,28 +24,28 @@
 }
 
 .card .card-title{
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     margin: 0;
 
 }
 
 .card .card-text1{
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 /* 注意·前面的space */
 .card .card-text2{   
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 
 .card .card-text2-caibi-niubi.niubi{
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     color: blue;
 }
 
 .card .card-text2-caibi-niubi.caibi{
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     color: red;
 }
 
@@ -73,7 +77,7 @@
 
 .counter-container{
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 .counter-display{
@@ -86,7 +90,7 @@
     width: 150px;
     height: 25px;
     font-size: 1em;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: white;
     background-color: hsl(197, 100%, 58%);
     border-radius: 5px;
@@ -96,4 +100,131 @@
 
 .counter-button:hover{
     background-color: aqua;
+}
+
+.show-all-button{
+    margin-top: 20px;
+    width: 250px;
+    height: 25px;
+    font-size: 1em;
+    /* font-weight: bold; */
+    color: white;
+    background-color: hsl(197, 100%, 58%);
+    border: black solid;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.show-all-button:hover{
+    background-color: aqua;
+}
+
+.summary-container {
+    width: 300px;
+    border-bottom: 20px solid #03a9f4;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  
+  .summary-container h4 {
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 700;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .summary-container ul {
+    position: relative;
+    background: #fff;
+    padding: 0; /* Reset padding for the ul */
+  }
+  
+  .summary-container ul:hover li {
+    opacity: 0.2;
+  }
+  
+  .summary-container ul li {
+    list-style: none;
+    padding: 10px;
+    margin: 0; /* Reset margin for the li */
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s;
+  }
+  
+  .summary-container ul li:hover {
+    transform: scale(1.1);
+    z-index: 5;
+    background: #25bcff;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    opacity: 1;
+  }
+  
+  .summary-container ul li span {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background: #25bcff;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    transform: translateY(-2px);
+  }
+  
+  .summary-container ul li:hover span {
+    background: #fff;
+    color: #25bcff;
+  }
+  
+
+
+.color-picker-container{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.color-display{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    transition: 0.25s ease;
+
+}
+
+.color-display p{
+    color:hsl(0, 0%, 25%);
+    font-size: 1rem;
+    text-align: center;
+}
+
+input[type="color"]{
+    width: 75px;
+    height:50px;
+
+    padding: 5px;
+    border-radius: 10px;
 }
