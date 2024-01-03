@@ -228,3 +228,45 @@ input[type="color"]{
     padding: 5px;
     border-radius: 10px;
 }
+
+.DataTableCP{
+    max-width: 950px;
+    margin: 50px auto;
+    box-sizing:border-box;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.DataTableCP table{
+    border-collapse:collapse ;
+    
+    width: 100%;
+}
+
+.DataTableCP table td,
+.DataTableCP table th{
+    text-align: left;
+    padding: 10px 15px;
+    border:1px solid #eee;
+
+}
+
+.datatable-search-container{
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    margin-bottom: 10px; /* Optional: Add some spacing */
+    
+
+}
+
+.datatable-search-container span{
+    margin-right: 5px;
+}
+.datatable-search-box {
+    margin-right: 5px; /* Adjust this value as needed */
+  }
+
+  .datatable-search-button:hover{
+      cursor: pointer;
+  }

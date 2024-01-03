@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import Footer from "./pages/Home/components/Footer";
 import Header from "./pages/Home/components/Header";
 import UserGreeting from "./pages/Home/components/UserGreeting";
@@ -8,6 +8,11 @@ import ColorPicker from "./pages/Home/components/ColorPicker/";
 import Card from "./components/Card";
 import List from "./components/List";
 import Button from "./components/Button";
+
+import movieData from "./assets/movieData";
+import movieColumns from "./assets/movieColumns";
+
+import DataTableDIY from "./components/DataTable";
 
 export default function App() {
   const bottomRef = useRef(null);
@@ -43,6 +48,8 @@ export default function App() {
     ]
   );
 
+  let searchTerm = "";
+
   return (
     <>
       <Header />
@@ -71,6 +78,15 @@ export default function App() {
       <ColorPicker />
 
       <hr />
+      <h3>DataTable</h3>
+      <DataTableDIY
+        data={movieData}
+        columns={movieColumns}
+        searchTerm={searchTerm}
+      />
+
+      <hr />
+
       <div ref={bottomRef} />
       <Footer />
     </>
