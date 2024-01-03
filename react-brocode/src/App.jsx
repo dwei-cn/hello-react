@@ -4,6 +4,7 @@ import Header from "./pages/Home/components/Header";
 import UserGreeting from "./pages/Home/components/UserGreeting";
 import UseStateComponent from "./pages/Home/components/UseStateComponent/";
 import ColorPicker from "./pages/Home/components/ColorPicker/";
+import UpdateObjectArray from "./pages/Home/components/UpdateObjectArray";
 
 import Card from "./components/Card";
 import List from "./components/List";
@@ -48,8 +49,6 @@ export default function App() {
     ]
   );
 
-  let searchTerm = "";
-
   return (
     <>
       <Header />
@@ -79,14 +78,13 @@ export default function App() {
 
       <hr />
       <h3>DataTable</h3>
-      <DataTableDIY
-        data={movieData}
-        columns={movieColumns}
-        searchTerm={searchTerm}
-      />
+      <DataTableDIY data={movieData} columns={movieColumns} />
 
+      <hr/>
+      <h3>Update Objects And Array</h3>
+      <UpdateObjectArray/>
+      
       <hr />
-
       <div ref={bottomRef} />
       <Footer />
     </>

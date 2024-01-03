@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function UseStateComponent() {
+  // Using the state hook with updater function
   const [nameDisplay, setNameDisplay] = useState("Guest");
   const [newName, setNewName] = useState(nameDisplay); // newName的默认值直接就是name
   const [age, setAge] = useState(20);
@@ -33,11 +34,14 @@ export default function UseStateComponent() {
   };
 
   const incAge = () => {
-    setAge(age + 1);
+    // Using updater function to get the previous state
+    setAge((age) => age + 1);
+    setAge((age) => age + 1);
   };
 
   const decAge = () => {
-    setAge(age - 1);
+    setAge((age) => age - 1);
+    setAge((age) => age - 1);
   };
 
   return (
