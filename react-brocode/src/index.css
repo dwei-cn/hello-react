@@ -267,6 +267,18 @@ input[type="color"]{
     margin-right: 5px; /* Adjust this value as needed */
   }
 
-  .datatable-search-button:hover{
+.datatable-search-button:hover{
       cursor: pointer;
+  }
+
+.fetch-data-box{
+    border: 1px black solid;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+
+}
+
+.through {
+    text-decoration: line-through;
   }

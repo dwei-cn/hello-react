@@ -1,58 +1,58 @@
-import { useState } from "react";
+import { useState } from "react"
 
 export default function UpdateObjectArray() {
-  const [car, setCar] = useState({ year: 2024, make: "BMW", model: "M2" });
-  const [foods, setFoods] = useState(["🍔", "🍌", "☕️", "🍡"]);
-  const [newFood, setNewFood] = useState("");
+  const [car, setCar] = useState({ year: 2024, make: "BMW", model: "M2" })
+  const [foods, setFoods] = useState(["🍔", "🍌", "☕️", "🍡"])
+  const [newFood, setNewFood] = useState("")
 
   const [cars, setCars] = useState([
     { year: new Date().getFullYear(), make: "BMW", model: "M2" },
-  ]);
-  const [carYear, setCarYear] = useState("");
-  const [carMake, setCarMake] = useState("");
-  const [carModel, setCarModel] = useState("");
+  ])
+  const [carYear, setCarYear] = useState("")
+  const [carMake, setCarMake] = useState("")
+  const [carModel, setCarModel] = useState("")
 
   //更新prev Car 这个object其中的value为新的event的target.value
   const handleYear = (e) => {
-    setCar((car) => ({ ...car, year: e.target.value })); // 注意curly brace外面再加个bracket
-  };
+    setCar((car) => ({ ...car, year: e.target.value })) // 注意curly brace外面再加个bracket
+  }
 
   const handleMake = (e) => {
-    setCar((car) => ({ ...car, make: e.target.value }));
-  };
+    setCar((car) => ({ ...car, make: e.target.value }))
+  }
 
   const handleModel = (e) => {
-    setCar((car) => ({ ...car, model: e.target.value })); // 添加新item为{}
-  };
+    setCar((car) => ({ ...car, model: e.target.value })) // 添加新item为{}
+  }
 
   const handleYear2 = (e) => {
-    setCarYear(e.target.value);
-  };
+    setCarYear(e.target.value)
+  }
 
   const handleMake2 = (e) => {
-    setCarMake(e.target.value.toUpperCase());
-  };
+    setCarMake(e.target.value.toUpperCase())
+  }
 
   const handleModel2 = (e) => {
-    setCarModel(e.target.value.toUpperCase());
-  };
+    setCarModel(e.target.value.toUpperCase())
+  }
 
   const handleAddCar = () => {
-    const newCar = { year: carYear, make: carMake, model: carModel };
-    setCars((cars) => [...cars, newCar]); // add a new item to array
+    const newCar = { year: carYear, make: carMake, model: carModel }
+    setCars((cars) => [...cars, newCar]) // add a new item to array
 
-    setCarYear("");
-    setCarMake("");
-    setCarModel("");
-  };
+    setCarYear("")
+    setCarMake("")
+    setCarModel("")
+  }
 
   const handleRemoveCar = (index) => {
-    setCars(cars.filter((_, i) => i !== index));
-  };
+    setCars(cars.filter((_, i) => i !== index))
+  }
 
   const resetCar2 = () => {
-    setCars([{ year: 2024, make: "BMW", model: "M2" }]);
-  };
+    setCars([{ year: 2024, make: "BMW", model: "M2" }])
+  }
 
   // const handleFood1 = () => {
   //   if (foods.includes(newFood)) {
@@ -65,29 +65,29 @@ export default function UpdateObjectArray() {
   // };
 
   const handleFood2 = () => {
-    const newFood2 = document.getElementById("foodInput").value;
-    document.getElementById("foodInput").value = "";
+    const newFood2 = document.getElementById("foodInput").value
+    document.getElementById("foodInput").value = ""
 
     if (foods.includes(newFood2)) {
-      window.alert("Food already exists!");
+      window.alert("Food already exists!")
     } else {
-      setFoods([...foods, newFood2]); // 添加新item为[]
+      setFoods([...foods, newFood2]) // 添加新item为[]
     }
-  };
+  }
 
   const resetCar = () => {
-    setCar((car) => ({ ...car, year: 2024, make: "BMW", model: "M2" }));
-  };
+    setCar((car) => ({ ...car, year: 2024, make: "BMW", model: "M2" }))
+  }
 
   const resetFood = () => {
-    setFoods(["🍔", "🍌", "☕️", "🍡"]);
-    setNewFood("");
-  };
+    setFoods(["🍔", "🍌", "☕️", "🍡"])
+    setNewFood("")
+  }
 
   const handleRemoveFood = (index) => {
-    console.log(index);
-    setFoods(foods.filter((_, i) => i !== index)); // filter，结果是不等于index的item
-  };
+    console.log(index)
+    setFoods(foods.filter((_, i) => i !== index)) // filter，结果是不等于index的item
+  }
 
   return (
     <div>
@@ -153,5 +153,5 @@ export default function UpdateObjectArray() {
       <button onClick={handleFood2}>Add food</button>
       <button onClick={resetFood}>Reset</button>
     </div>
-  );
+  )
 }
