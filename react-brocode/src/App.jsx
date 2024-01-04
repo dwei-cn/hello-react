@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Footer from "./pages/Home/components/Footer";
 import Header from "./pages/Home/components/Header";
 import UserGreeting from "./pages/Home/components/UserGreeting";
@@ -80,10 +80,10 @@ export default function App() {
       <h3>DataTable</h3>
       <DataTableDIY data={movieData} columns={movieColumns} />
 
-      <hr/>
+      <hr />
       <h3>Update Objects And Array</h3>
-      <UpdateObjectArray/>
-      
+      <UpdateObjectArray />
+
       <hr />
       <div ref={bottomRef} />
       <Footer />

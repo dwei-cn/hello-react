@@ -54,15 +54,15 @@ export default function UpdateObjectArray() {
     setCars([{ year: 2024, make: "BMW", model: "M2" }]);
   };
 
-  const handleFood1 = () => {
-    if (foods.includes(newFood)) {
-      window.alert("Food already exists!");
-    } else {
-      setFoods((foods) => [...foods, newFood]); // 添加新item为[]
-    }
+  // const handleFood1 = () => {
+  //   if (foods.includes(newFood)) {
+  //     window.alert("Food already exists!");
+  //   } else {
+  //     setFoods((foods) => [...foods, newFood]); // 添加新item为[]
+  //   }
 
-    setNewFood("");
-  };
+  //   setNewFood("");
+  // };
 
   const handleFood2 = () => {
     const newFood2 = document.getElementById("foodInput").value;
