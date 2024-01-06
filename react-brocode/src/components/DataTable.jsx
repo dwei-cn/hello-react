@@ -1,33 +1,27 @@
-import DataTable from "react-data-table-component";
-import React, { useState } from "react";
+import DataTable from "react-data-table-component"
+import React, { useState, useMemo } from "react"
 
 export default function DataTableDIY({ data, columns }) {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("")
 
-  // 所谓的filter就是查找每个item的各个value是否存在searchTerm
-  const filterData = () => {
+  const filteredData = useMemo(() => {
+    if (!searchTerm) return data
+
     return data.filter((item) => {
-      if (searchTerm === "") {
-        return true; // or return item; depending on your logic
-      } else {
-        // Check if any property value includes the searchTerm
-        const values = Object.values(item);
-        return values.some((value) => {
-          if (typeof value === "string" || typeof value === "number") {
-            return value
-              .toString()
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase());
-          }
-        });
-      }
-    });
-  };
+      const values = Object.values(item)
+
+      return values.some(
+        (value) =>
+          (typeof value === "string" || typeof value === "number") &&
+          value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    })
+  }, [data, searchTerm])
 
   return (
     <>
       <div className="datatable-search-container">
-        <span>Search:   </span>
+        <span>Search: </span>
         <input
           className="datatable-search-box"
           type="text"
@@ -37,14 +31,14 @@ export default function DataTableDIY({ data, columns }) {
         />
         <button
           className="datatable-search-button"
-          onClick={(e) => setSearchTerm("")}
+          onClick={() => setSearchTerm("")}
         >
           Clear
         </button>
       </div>
       <div>
-        <DataTable data={filterData()} columns={columns} pagination />
+        <DataTable data={filteredData} columns={columns} pagination />
       </div>
     </>
-  );
+  )
 }

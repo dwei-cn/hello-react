@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid"
-import React, { useState } from "react"
+import { useState } from "react"
 import data from "/Users/dwei/Documents/dwei_local/hello-react/react-brocode/src/assets/sampleJSON.json"
 
 export default function FetchData() {
@@ -13,7 +13,7 @@ export default function FetchData() {
 
   return (
     <div>
-      <p className={isThrough && "through"} onDoubleClick={handleDoubleClick}>
+      <p className={isThrough ? "through":""} onDoubleClick={handleDoubleClick}>
         双击<strong>划线</strong>
       </p>
       <h4>Read JSON file</h4>

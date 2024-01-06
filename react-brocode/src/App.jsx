@@ -87,7 +87,7 @@ export default function App() {
       <UpdateObjectArray />
 
       <hr />
-      <h3>Fetch Data</h3>
+      <h3>Fetch Data (useEffect)</h3>
       <FetchData />
       <UseEffectComp />
 

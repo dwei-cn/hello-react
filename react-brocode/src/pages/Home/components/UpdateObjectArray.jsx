@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function UpdateObjectArray() {
   const [car, setCar] = useState({ year: 2024, make: "BMW", model: "M2" })
@@ -8,9 +8,12 @@ export default function UpdateObjectArray() {
   const [cars, setCars] = useState([
     { year: new Date().getFullYear(), make: "BMW", model: "M2" },
   ])
+  const [prevCars, setPrevCars] = useState(cars)
   const [carYear, setCarYear] = useState("")
   const [carMake, setCarMake] = useState("")
   const [carModel, setCarModel] = useState("")
+
+  // const [carsLen, setCarsLen] = useState(cars.length())
 
   //更新prev Car 这个object其中的value为新的event的target.value
   const handleYear = (e) => {
@@ -38,21 +41,35 @@ export default function UpdateObjectArray() {
   }
 
   const handleAddCar = () => {
+    setPrevCars(cars) // 提前保存下cars，在cars产生变化之前
     const newCar = { year: carYear, make: carMake, model: carModel }
     setCars((cars) => [...cars, newCar]) // add a new item to array
-
     setCarYear("")
     setCarMake("")
     setCarModel("")
   }
 
   const handleRemoveCar = (index) => {
+    setPrevCars(cars)
     setCars(cars.filter((_, i) => i !== index))
   }
 
   const resetCar2 = () => {
+    setPrevCars(cars)
     setCars([{ year: 2024, make: "BMW", model: "M2" }])
   }
+
+  useEffect(() => {
+    if (cars.length > prevCars.length) {
+      window.alert(
+        `Cars have increased! Pre cars: ${prevCars.length} Current cars: ${cars.length}`
+      )
+    } else if (cars.length < prevCars.length) {
+      window.alert(
+        `Cars have decreased! Pre cars: ${prevCars.length} Current cars: ${cars.length}`
+      )
+    }
+  }, [cars, prevCars])
 
   // const handleFood1 = () => {
   //   if (foods.includes(newFood)) {
@@ -91,7 +108,7 @@ export default function UpdateObjectArray() {
 
   return (
     <div>
-      <h4>Favorite Car 1</h4>
+      <h4>Favorite Car 1 (useState)</h4>
       <p>
         My favorite car is {car.year} {car.make} {car.model}.
       </p>
@@ -112,7 +129,7 @@ export default function UpdateObjectArray() {
             car,
             index // {}的话就需要return
           ) => (
-            <li key={index} onClick={() => handleRemoveCar(index)}>
+            <li key={index} onDoubleClick={() => handleRemoveCar(index)}>
               {car.year} {car.make} {car.model}
             </li>
           )
@@ -137,7 +154,7 @@ export default function UpdateObjectArray() {
           // array map直接就产生了index
           // 如果event不用的话就不需要传入
           // index是可以直接用的
-          <li key={index} onClick={() => handleRemoveFood(index)}>
+          <li key={index} onDoubleClick={() => handleRemoveFood(index)}>
             {food}
           </li>
         ))}
