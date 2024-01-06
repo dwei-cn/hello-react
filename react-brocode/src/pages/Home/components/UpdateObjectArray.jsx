@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 export default function UpdateObjectArray() {
   const [car, setCar] = useState({ year: 2024, make: "BMW", model: "M2" })
@@ -8,7 +8,8 @@ export default function UpdateObjectArray() {
   const [cars, setCars] = useState([
     { year: new Date().getFullYear(), make: "BMW", model: "M2" },
   ])
-  const [prevCars, setPrevCars] = useState(cars)
+  // const [prevCars, setPrevCars] = useState(cars)
+  const prevCars = useRef(car) // useRef用于默默记录后台数据很不错
   const [carYear, setCarYear] = useState("")
   const [carMake, setCarMake] = useState("")
   const [carModel, setCarModel] = useState("")
@@ -41,7 +42,7 @@ export default function UpdateObjectArray() {
   }
 
   const handleAddCar = () => {
-    setPrevCars(cars) // 提前保存下cars，在cars产生变化之前
+    prevCars.current = cars //提前保存下cars，在cars产生变化之前
     const newCar = { year: carYear, make: carMake, model: carModel }
     setCars((cars) => [...cars, newCar]) // add a new item to array
     setCarYear("")
@@ -50,26 +51,27 @@ export default function UpdateObjectArray() {
   }
 
   const handleRemoveCar = (index) => {
-    setPrevCars(cars)
+    prevCars.current = cars
     setCars(cars.filter((_, i) => i !== index))
   }
 
   const resetCar2 = () => {
-    setPrevCars(cars)
+    prevCars.current = cars
     setCars([{ year: 2024, make: "BMW", model: "M2" }])
   }
 
   useEffect(() => {
-    if (cars.length > prevCars.length) {
+    // useRef用于默默记录后台数据很不错
+    if (cars.length > prevCars.current.length) {
       window.alert(
-        `Cars have increased! Pre cars: ${prevCars.length} Current cars: ${cars.length}`
+        `Cars have increased! Previousre #cars: ${prevCars.current.length} Current #cars: ${cars.length}`
       )
-    } else if (cars.length < prevCars.length) {
+    } else if (cars.length < prevCars.current.length) {
       window.alert(
-        `Cars have decreased! Pre cars: ${prevCars.length} Current cars: ${cars.length}`
+        `Cars have decreased! Previous #cars:${prevCars.current.length} Current #cars: ${cars.length}`
       )
     }
-  }, [cars, prevCars])
+  }, [cars])
 
   // const handleFood1 = () => {
   //   if (foods.includes(newFood)) {
