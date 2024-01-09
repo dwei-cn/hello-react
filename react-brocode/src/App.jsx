@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, createContext } from "react"
 import Footer from "./pages/Home/components/Footer"
 import Header from "./pages/Home/components/Header"
 import UserGreeting from "./pages/Home/components/UserGreeting"
@@ -11,11 +11,22 @@ import List from "./components/List"
 import Button from "./components/Button"
 import FetchData from "./components/FetchData"
 import UseEffectComp from "./components/UseEffectComp"
+import UseRefComp from "./components/UseRefComp"
+import UseContextComp from "./components/UseContextComp"
+import UseReducerComp from "./components/UseReducerComp"
 
 import movieData from "./assets/movieData"
 import movieColumns from "./assets/movieColumns"
 
 import DataTableDIY from "./components/DataTable"
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import PageAbout from "./components/PageAbout"
+import PageNews from "./components/PageNotFound"
+import PageHome from "./components/PageHome"
+import PageNotFound from "./components/PageNotFound"
+
+export const ContextExample = createContext()
 
 export default function App() {
   const bottomRef = useRef(null)
@@ -40,6 +51,14 @@ export default function App() {
     { id: 3, name: "corn", calories: 95 },
     { id: 5, name: "broccoli", calories: 50 },
   ]
+
+  const deeplearnAWS = {
+    sitename: "神学AWS",
+    author: "Koma",
+    sayHello: (pname) => {
+      console.log(`hello${pname}.${Math.random().toString()}`)
+    },
+  }
 
   useEffect(
     () => {
@@ -87,9 +106,37 @@ export default function App() {
       <UpdateObjectArray />
 
       <hr />
-      <h3>Fetch Data (useEffect)</h3>
+      <h3>Hook</h3>
       <FetchData />
       <UseEffectComp />
+      <UseRefComp />
+      <ContextExample.Provider value={deeplearnAWS}>
+        <UseContextComp />
+      </ContextExample.Provider>
+      <UseReducerComp />
+
+      <hr />
+      <h3>React Router</h3>
+      <>
+        <nav>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/news">News</Link>
+          </li>
+        </nav>
+        <br />
+        <Routes>
+          <Route path="/" element={<PageHome />} />
+          <Route path="/news" element={<PageNews />} />
+          <Route path="/about" element={<PageAbout />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </>
 
       <hr />
       <div ref={bottomRef} />

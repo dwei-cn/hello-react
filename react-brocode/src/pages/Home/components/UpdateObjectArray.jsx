@@ -9,7 +9,7 @@ export default function UpdateObjectArray() {
     { year: new Date().getFullYear(), make: "BMW", model: "M2" },
   ])
   // const [prevCars, setPrevCars] = useState(cars)
-  const prevCars = useRef(car) // useRef用于默默记录后台数据很不错
+  const prevCars = useRef(car) // useRef不用render，用于默默记录后台数据很不错
   const [carYear, setCarYear] = useState("")
   const [carMake, setCarMake] = useState("")
   const [carModel, setCarModel] = useState("")
@@ -61,7 +61,7 @@ export default function UpdateObjectArray() {
   }
 
   useEffect(() => {
-    // useRef用于默默记录后台数据很不错
+    // useRef不用render，用于默默记录后台数据很不错
     if (cars.length > prevCars.current.length) {
       window.alert(
         `Cars have increased! Previousre #cars: ${prevCars.current.length} Current #cars: ${cars.length}`
