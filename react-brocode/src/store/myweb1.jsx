@@ -9,6 +9,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState1 = {
   sitename: "小马学react",
   viewCount: 100,
+  datalist: [],
 }
 
 // add initial state to slice
@@ -28,6 +29,9 @@ const mySlice1 = createSlice({
     },
     reset(state) {
       state.viewCount = initialState1.viewCount // Reset to the original initial state value
+    },
+    setDatalist(state, action) {
+      state.datalist = action.payload
     },
   },
 })

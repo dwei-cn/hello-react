@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux" // 用俩hook来调取sta
 import { mywebActions1 } from "../store/myweb1" // 调取reducers/actions
 import { mywebActions2 } from "../store/myweb2" // 调取reducers/actions
 import { authActions } from "../store/auth" // 非default export而是named exports，要用{}
+import { loadData } from "../store/asyncDemo"
 
 export default function ReduxToolkitComp() {
   // 调用state
   const sitename = useSelector((state) => state.myweb1.sitename)
   const viewCount = useSelector((state) => state.myweb1.viewCount)
+  const datalist = useSelector((state) => state.myweb1.datalist)
 
   const isAuthed = useSelector((state) => state.auth.isAuthed)
 
@@ -46,6 +48,10 @@ export default function ReduxToolkitComp() {
     dispatch(mywebActions2.resetStatus())
   }
 
+  const btn_loaddata_click = async () => {
+    dispatch(loadData())
+  }
+
   return (
     <React.Fragment>
       <p>Site Name: {sitename}</p>
@@ -71,6 +77,14 @@ export default function ReduxToolkitComp() {
         <button onClick={btn_update_status_click}>Update status</button>
         <button onClick={btn_reset_status_click}>Reset</button>
       </div>
+      <br />
+
+      <button onClick={btn_loaddata_click}>Load Data</button>
+      <ul>
+        {datalist.map((item) => (
+          <li key={item.episode_id}>{item.title}</li>
+        ))}
+      </ul>
     </React.Fragment>
   )
 }
