@@ -35,4 +35,5 @@ const mySlice1 = createSlice({
 // action就是reducers
 export const mywebActions1 = mySlice1.actions
 
+// 导出slice
 export default mySlice1 // 使用命名导出

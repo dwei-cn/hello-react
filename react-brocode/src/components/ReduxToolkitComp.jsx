@@ -1,8 +1,8 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux" // 用俩hook来调取state和functions
-import mywebActions1 from "../store/myweb1" // 调取reducers/actions
-import mywebActions2 from "../store/myweb2" // 调取reducers/actions
-import authActions from "../store/auth" // 调取reducers/actions
+import { mywebActions1 } from "../store/myweb1" // 调取reducers/actions
+import { mywebActions2 } from "../store/myweb2" // 调取reducers/actions
+import { authActions } from "../store/auth" // 非default export而是named exports，要用{}
 
 export default function ReduxToolkitComp() {
   // 调用state
@@ -69,7 +69,7 @@ export default function ReduxToolkitComp() {
       <p>Status: {statusNow}</p>
       <div>
         <button onClick={btn_update_status_click}>Update status</button>
-        <button onClick={btn_reset_status_click}>Reset status</button>
+        <button onClick={btn_reset_status_click}>Reset</button>
       </div>
     </React.Fragment>
   )
