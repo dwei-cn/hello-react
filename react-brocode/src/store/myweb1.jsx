@@ -32,27 +32,7 @@ const mySlice1 = createSlice({
   },
 })
 
-const initialState2 = {
-  statusNow: "好烦啊!",
-}
-
-const mySlice2 = createSlice({
-  name: "myweb2",
-  initialState: initialState2,
-  reducers: {
-    updateStatus(state) {
-      let extractedString = state.statusNow.slice(0, -1)
-      extractedString += "啊!"
-      return { ...state, statusNow: extractedString } // 更新string
-    },
-    resetStatus(state) {
-      return { ...state, statusNow: initialState2.statusNow }
-    },
-  },
-})
-
 // action就是reducers
 export const mywebActions1 = mySlice1.actions
-export const mywebActions2 = mySlice2.actions
 
-export default { mySlice1, mySlice2 } // 使用命名导出
+export default mySlice1 // 使用命名导出

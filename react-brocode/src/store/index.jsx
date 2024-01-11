@@ -4,8 +4,9 @@
 // 分片管理
 
 import { configureStore } from "@reduxjs/toolkit"
-import { authSlice } from "./auth"
-import { mySlice1, mySlice2 } from "./myweb"
+import authSlice from "./auth"
+import mySlice1 from "./myweb1"
+import mySlice2 from "./myweb2"
 
 const store = configureStore({
   // reducer: mywebSlice.reducer,

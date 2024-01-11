@@ -1,7 +1,8 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux" // 用俩hook来调取state和functions
-import { mywebActions1, mywebActions2 } from "../store/myweb" // 调取reducers/actions
-import { authActions } from "../store/auth" // 调取reducers/actions
+import mywebActions1 from "../store/myweb1" // 调取reducers/actions
+import mywebActions2 from "../store/myweb2" // 调取reducers/actions
+import authActions from "../store/auth" // 调取reducers/actions
 
 export default function ReduxToolkitComp() {
   // 调用state

@@ -24,4 +24,4 @@ const authSlice = createSlice({
 
 // action就是reducers
 export const authActions = authSlice.actions
-export default { authSlice }
+export default authSlice
