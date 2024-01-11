@@ -25,6 +25,9 @@ import PageAbout from "./components/PageAbout"
 import PageNews from "./components/PageNotFound"
 import PageHome from "./components/PageHome"
 import PageNotFound from "./components/PageNotFound"
+import UseFormComp from "./components/UseFormComp"
+import UseFetchComp from "./components/UseFetchComp"
+import ReduxToolkitComp from "./components/ReduxToolkitComp"
 
 export const ContextExample = createContext()
 
@@ -106,8 +109,9 @@ export default function App() {
       <UpdateObjectArray />
 
       <hr />
-      <h3>Hook</h3>
+      <h3>Hooks</h3>
       <FetchData />
+      <UseFetchComp />
       <UseEffectComp />
       <UseRefComp />
       <ContextExample.Provider value={deeplearnAWS}>
@@ -137,6 +141,13 @@ export default function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </>
+
+      <hr />
+      <h3>React Form 进阶</h3>
+      <UseFormComp />
+
+      <h3>Redux Toolkit</h3>
+      <ReduxToolkitComp />
 
       <hr />
       <div ref={bottomRef} />
