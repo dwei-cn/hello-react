@@ -18,8 +18,8 @@ export default function UseReducerComp() {
 
   return (
     <>
-      <h3>useReducer</h3>
-      <h4>{count}</h4>
+      <h4>useReducer</h4>
+      <h5>{count}</h5>
       <button
         onClick={() => {
           dispatch({

@@ -18,6 +18,7 @@ const mySlice1 = createSlice({
   name: "myweb1",
   initialState: initialState1,
   reducers: {
+    // state就是initialstate的值
     add(state) {
       state.viewCount++
     },
@@ -25,13 +26,13 @@ const mySlice1 = createSlice({
       state.viewCount--
     },
     multiply(state, action) {
-      state.viewCount *= action.payload
+      state.viewCount *= action.payload // use payload when your action requires additional information to perform its task. If the action doesn't need any extra data, you might not use payload.
     },
     reset(state) {
       state.viewCount = initialState1.viewCount // Reset to the original initial state value
     },
     setDatalist(state, action) {
-      state.datalist = action.payload
+      state.datalist = action.payload // Loaddata 功能
     },
   },
 })

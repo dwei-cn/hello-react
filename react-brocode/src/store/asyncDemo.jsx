@@ -26,7 +26,6 @@ export const loadData = () => {
       dispatch(mywebActions1.setDatalist(resultData.results))
     } catch (err) {
       console.error(err)
-      dispatch(mywebActions1.minus())
     }
   }
 }

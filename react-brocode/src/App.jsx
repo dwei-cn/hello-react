@@ -14,6 +14,7 @@ import UseEffectComp from "./components/UseEffectComp"
 import UseRefComp from "./components/UseRefComp"
 import UseContextComp from "./components/UseContextComp"
 import UseReducerComp from "./components/UseReducerComp"
+import UseMemoComp from "./components/UseMemoComp"
 
 import movieData from "./assets/movieData"
 import movieColumns from "./assets/movieColumns"
@@ -118,6 +119,7 @@ export default function App() {
         <UseContextComp />
       </ContextExample.Provider>
       <UseReducerComp />
+      <UseMemoComp />
 
       <hr />
       <h3>React Router</h3>
