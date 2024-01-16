@@ -282,3 +282,30 @@ input[type="color"]{
 .through {
     text-decoration: line-through;
   }
+
+.game {
+    margin-left: 10px;
+    display: flex;
+}
+
+/* 每一个小格子 */
+.square{ 
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: none;
+    box-shadow: 0px 0px 0px 2px gray;
+}
+
+.row-1, .row-2, .row-3 {
+    display: flex;
+}
+
+.game-steps{
+    margin-top: 25px;
+    margin-left: 40px;
+}
+
+.game li{
+    margin-bottom: 3px;
+}
