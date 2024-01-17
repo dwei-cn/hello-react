@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid"
 import { useState } from "react"
-import data from "/Users/dwei/Documents/dwei_local/hello-react/react-brocode/src/assets/sampleJSON.json"
+import data from "/Users/dwei/Documents/dwei_local/hello-react/react-brocode-shuige/src/assets/sampleJSON.json"
 
 export default function FetchData() {
   const [isThrough, setIsThrough] = useState(false)

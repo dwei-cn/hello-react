@@ -2,8 +2,8 @@ import { useRef, useEffect, createContext } from "react";
 import Footer from "./pages/Home/components/Footer";
 import Header from "./pages/Home/components/Header";
 import UserGreeting from "./pages/Home/components/UserGreeting";
-import UseStateComponent from "./pages/Home/components/UseStateComponent/";
-import ColorPicker from "./pages/Home/components/ColorPicker/";
+import UseStateComponent from "./pages/Home/components/UseStateComponent";
+import ColorPicker from "./pages/Home/components/ColorPicker";
 import UpdateObjectArray from "./pages/Home/components/UpdateObjectArray";
 import Tictactoe from "./pages/Home/components/Tictactoe";
 
