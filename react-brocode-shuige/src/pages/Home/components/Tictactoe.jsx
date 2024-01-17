@@ -9,7 +9,6 @@ export default function Tictactoe() {
   const handleClickBoard = (index) => {
     if (!gameon) {
       alert("We got a winner, game over!")
-      // console.log("We got a winner, can't move!")
       return
     }
 
@@ -18,21 +17,16 @@ export default function Tictactoe() {
       squaresCopy[index] = nextMove
       setSquares(squaresCopy)
       setNextMove(nextMove === "⭕" ? "❌" : "⭕")
-      // console.log(squaresCopy)
 
       const winner = hasWinner(squaresCopy) // 必须给实时的数据，才能得到real-time value
 
       if (winner) {
         setGameon(false)
-
-        // console.log(snapshot)
       }
       setSnapshot([...snapshot, squaresCopy])
     } else {
       alert("You can't change this square!")
     }
-
-    // console.log(snapshot)
   }
 
   const handleStepsClick = (index) => {
