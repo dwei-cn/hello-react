@@ -31,7 +31,7 @@ export default function Tictactoe() {
 
   const handleStepsClick = (index) => {
     const squaresCopy2 = snapshot[index].slice()
-    console.log(squaresCopy2)
+    // console.log(squaresCopy2)
     setSquares(squaresCopy2)
     setSnapshot(snapshot.slice(0, index + 1))
 
