@@ -30,7 +30,7 @@ export default function Tictactoe() {
   }
 
   const handleStepsClick = (index) => {
-    const squaresCopy2 = snapshot[index].slice()
+    const squaresCopy2 = snapshot[index].slice() // snapshot最后一个item作为当前square
     // console.log(squaresCopy2)
     setSquares(squaresCopy2)
     setSnapshot(snapshot.slice(0, index + 1))
