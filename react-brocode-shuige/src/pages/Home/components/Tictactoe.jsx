@@ -42,7 +42,7 @@ export default function Tictactoe() {
 
   // 判断胜利条件
   const hasWinner = (squares) => {
-    // 先列举出全部的情况，然后进行遍历，取出squares里面所有的各个对应位置的值
+    // 先列举出全部的情况，然后对wincases进行遍历，取出squares里面所有的各个对应位置的值
     // 如果值都是一致且相同，说明存在winner
     const winCases = [
       // 横
@@ -63,6 +63,7 @@ export default function Tictactoe() {
     for (let i = 0; i < winCases.length; i++) {
       const [a, b, c] = winCases[i]
 
+      // 如果a值为⭕或❌，且a与b和c相同
       if (squares && (squares[a] === "⭕" || squares[a] === "❌")) {
         if (squares[a] === squares[b] && squares[a] === squares[c])
           return squares[a]
