@@ -13,7 +13,7 @@ export default function UseFetchComp() {
   }, [])
 
   async function search(presource) {
-    console.log("search", presource)
+    // console.log("search", presource)
     const datalist = await get("/" + presource)
     if (response.ok) {
       setDataset(datalist.results)

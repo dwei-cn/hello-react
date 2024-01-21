@@ -1,44 +1,45 @@
-import { useRef, useEffect, createContext } from "react";
-import Footer from "./pages/Home/components/Footer";
-import Header from "./pages/Home/components/Header";
-import UserGreeting from "./pages/Home/components/UserGreeting";
-import UseStateComponent from "./pages/Home/components/UseStateComponent";
-import ColorPicker from "./pages/Home/components/ColorPicker";
-import UpdateObjectArray from "./pages/Home/components/UpdateObjectArray";
-import Tictactoe from "./pages/Home/components/Tictactoe";
+import { useRef, useEffect, createContext } from "react"
+import Footer from "./pages/Home/components/Footer"
+import Header from "./pages/Home/components/Header"
+import UserGreeting from "./pages/Home/components/UserGreeting"
+import UseStateComponent from "./pages/Home/components/UseStateComponent"
+import ColorPicker from "./pages/Home/components/ColorPicker"
+import UpdateObjectArray from "./pages/Home/components/UpdateObjectArray"
+import Tictactoe from "./pages/Home/components/Tictactoe"
+import Signals from "./components/Signals"
 
-import Card from "./components/Card";
-import List from "./components/List";
-import Button from "./components/Button";
-import FetchData from "./components/FetchData";
-import UseEffectComp from "./components/UseEffectComp";
-import UseRefComp from "./components/UseRefComp";
-import UseContextComp from "./components/UseContextComp";
-import UseReducerComp from "./components/UseReducerComp";
-import UseMemoComp from "./components/UseMemoComp";
+import Card from "./components/Card"
+import List from "./components/List"
+import Button from "./components/Button"
+import FetchData from "./components/FetchData"
+import UseEffectComp from "./components/UseEffectComp"
+import UseRefComp from "./components/UseRefComp"
+import UseContextComp from "./components/UseContextComp"
+import UseReducerComp from "./components/UseReducerComp"
+import UseMemoComp from "./components/UseMemoComp"
 
-import movieData from "./assets/movieData";
-import movieColumns from "./assets/movieColumns";
+import movieData from "./assets/movieData"
+import movieColumns from "./assets/movieColumns"
 
-import DataTableDIY from "./components/DataTable";
+import DataTableDIY from "./components/DataTable"
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import PageAbout from "./components/PageAbout";
-import PageNews from "./components/PageNotFound";
-import PageHome from "./components/PageHome";
-import PageNotFound from "./components/PageNotFound";
-import UseFormComp from "./components/UseFormComp";
-import UseFetchComp from "./components/UseFetchComp";
-import ReduxToolkitComp from "./components/ReduxToolkitComp";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import PageAbout from "./components/PageAbout"
+import PageNews from "./components/PageNotFound"
+import PageHome from "./components/PageHome"
+import PageNotFound from "./components/PageNotFound"
+import UseFormComp from "./components/UseFormComp"
+import UseFetchComp from "./components/UseFetchComp"
+import ReduxToolkitComp from "./components/ReduxToolkitComp"
 
-export const ContextExample = createContext();
+export const ContextExample = createContext()
 
 export default function App() {
-  const bottomRef = useRef(null);
+  const bottomRef = useRef(null)
 
-  const logInInfo = { isLoggedIn: true, name: "John Wick" };
-  const name1 = { name: "John Doe", age: 30, isNewbie: true };
-  const name2 = { name: "Allan Smith", age: 25, isNewbie: false };
+  const logInInfo = { isLoggedIn: true, name: "John Wick" }
+  const name1 = { name: "John Doe", age: 30, isNewbie: true }
+  const name2 = { name: "Allan Smith", age: 25, isNewbie: false }
   // const name3 = { name: "James Bond" };
 
   const fruits = [
@@ -47,7 +48,7 @@ export default function App() {
     { id: 4, name: "kiwi", calories: 95 },
     { id: 3, name: "papaya", calories: 395 },
     { id: 5, name: "cheese", calories: 695 },
-  ];
+  ]
 
   const vegetables = [
     { id: 1, name: "potatoes", calories: 110 },
@@ -55,25 +56,25 @@ export default function App() {
     { id: 4, name: "carrots", calories: 25 },
     { id: 3, name: "corn", calories: 95 },
     { id: 5, name: "broccoli", calories: 50 },
-  ];
+  ]
 
   const deeplearnAWS = {
     sitename: "神学AWS",
     author: "Koma",
     sayHello: (pname) => {
-      console.log(`hello${pname}.${Math.random().toString()}`);
+      console.log(`hello${pname}.${Math.random().toString()}`)
     },
-  };
+  }
 
   useEffect(
     () => {
       // Scroll to the bottom when the component mounts or when the content changes
-      bottomRef.current.scrollIntoView({ behavior: "smooth" });
+      bottomRef.current.scrollIntoView({ behavior: "smooth" })
     },
     [
       /* dependencies */
     ]
-  );
+  )
 
   return (
     <>
@@ -157,8 +158,12 @@ export default function App() {
       <Tictactoe />
 
       <hr />
+      <h3>Signals</h3>
+      <Signals />
+
+      <hr />
       <div ref={bottomRef} />
       <Footer />
     </>
-  );
+  )
 }

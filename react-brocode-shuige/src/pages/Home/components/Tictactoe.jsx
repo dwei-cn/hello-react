@@ -1,4 +1,7 @@
 import { useState } from "react"
+import { signal, effect, batch, computed } from "@preact/signals-react"
+
+export const countSignal = signal(10) // 友情传参
 
 export default function Tictactoe() {
   const [squares, setSquares] = useState(Array(9).fill("")) // 初始化空array
