@@ -10,25 +10,28 @@ export default function Signals() {
   const base = signal(20)
 
   const [count, setCount] = useState(0)
-  //   const countSignal = signal(10)
 
   // computed准确来说是computed signal，可以根据signal之间的依赖关系创建signal
+  const countSignal = signal(10)
   // const countSignalDouble = computed(() => countSignal.value * 2) // 在一个signal的基础上创建另一个signal
   const countSignalDouble = computed(() => countSignal.value * 2) // 在一个signal的基础上创建另一个signal
   const countSignalSum = computed(() => countSignal + countSignalDouble) // 在一个signal的基础上创建另一个signal
 
+  const countAdd = (val) => {
+    countSignal.value += val
+  }
   // effect准确来说是创建side effect，不只是signal
   effect(() => {
     // 如果effect内部检测不到改变的signal，就不会render
     // const randomNumber = name1.value + base   // 会render，因为countSignal改变
-    const example1 = base.value //不render, 因为base不改变
+    const example1 = base.value //不render, 因为base没改变
     console.log("Exmple1 updated:", example1)
   })
 
   effect(() => {
     // 如果effect内部检测不到改变的signal，就不会render
     // const randomNumber = name1.value + base   // 会render，因为countSignal改变
-    const example2 = countSignal + countSignalDouble //不render, 因为base不改变
+    const example2 = countSignal + countSignalDouble //不render, 因为base没改变
     console.log("Example2 updated:", example2)
   })
 
@@ -55,9 +58,7 @@ export default function Signals() {
       Double Count: {countSignalDouble}
       <br />
       <br />
-      <button onClick={() => countSignal.value++}>
-        Increment (signal method)
-      </button>
+      <button onClick={() => countAdd(10)}>Increment (signal method)</button>
       <br />
       <br />
       <button onClick={() => setCount(count + 1)}>
@@ -65,12 +66,15 @@ export default function Signals() {
       </button>
       <br />
       <br />
-      溅射伤害1: {countSignal + countSignalDouble}
+      溅射伤害1: countSignalSum = {countSignal + countSignalDouble}
       <br />
-      溅射伤害2: {countSignalSum}
+      溅射伤害1.5: countSignalDouble = {countSignalDouble}
+      <br />
+      溅射伤害2: countSignalSum = {countSignalSum}
       <br />
       <br />
-      溅射伤害2来自于computed signal, 所以可以实时更新
+      溅射伤害2来自于computed signal, 所以可以实时更新,
+      溅射伤害1则是全局更新才会更新，比较lazy。
     </>
   )
 }

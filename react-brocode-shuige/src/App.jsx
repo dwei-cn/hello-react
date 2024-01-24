@@ -6,7 +6,8 @@ import UseStateComponent from "./pages/Home/components/UseStateComponent"
 import ColorPicker from "./pages/Home/components/ColorPicker"
 import UpdateObjectArray from "./pages/Home/components/UpdateObjectArray"
 import Tictactoe from "./pages/Home/components/Tictactoe"
-import Signals from "./components/Signals"
+import Signals from "./components/Signals1"
+import SignalsTodolist from "./components/Signals2"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -158,8 +159,13 @@ export default function App() {
       <Tictactoe />
 
       <hr />
-      <h3>Signals</h3>
+      <h3>Signals Basic</h3>
       <Signals />
+
+      <hr />
+      <h3>Signals Intermediate</h3>
+
+      <SignalsTodolist />
 
       <hr />
       <div ref={bottomRef} />
