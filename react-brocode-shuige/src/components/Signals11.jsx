@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { signal, effect, batch, computed } from "@preact/signals-react"
 import { countSignal } from "../pages/Home/components/Tictactoe"
 
-export default function Signals() {
+export default function Signals1() {
   console.log("Global Render")
 
   const base = signal(20)

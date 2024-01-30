@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react"
 
 export default function UseMemoComp() {
+  console.log("Global rendering: UseMemoComp")
   const [x, setX] = useState(10)
   const [y, setY] = useState(10)
 
