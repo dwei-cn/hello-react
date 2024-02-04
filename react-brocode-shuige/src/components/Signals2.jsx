@@ -1,6 +1,7 @@
 import { useSignal } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 import { todos2 } from "./TodolistSignals"
+import { useState } from "react"
 
 export default function SignalsTodolist() {
   console.log("Rendering: signals2")
@@ -12,6 +13,8 @@ export default function SignalsTodolist() {
 
   const todos = useSignal(["eat", "sleep", "play video game"])
   const newTodo = useSignal("")
+  const count = useSignal(0)
+  const [countHook, setCountHook] = useState(0)
 
   const addNewTodo = (e) => {
     e.preventDefault()
@@ -31,11 +34,24 @@ export default function SignalsTodolist() {
 
   return (
     <div>
+      Create a simple counter <br />
+      Count (signal): {count}{" "}
+      <button onClick={() => count.value++}>Click me! (signal)</button>
+      <br />
+      Count (hook): {countHook}{" "}
+      <button onClick={() => setCountHook(countHook + 1)}>
+        Click me! (hook)
+      </button>
+      <br />
+      <br />
+      <br /> <br />
+      <br />
       Create a todo list with signals. <br />
       <br />
       <em>
         <s>
-          signal貌似还是有挺多问题，感觉一碰到UI就无法render，无法触发todos的re-render，暂时无解
+          signal貌似还是有挺多问题, 感觉一碰到UI就无法render,
+          无法触发todos的re-render, 暂时无解
         </s>
         <br />
         加入了useSignal() + useSignals()问题就解决了...
