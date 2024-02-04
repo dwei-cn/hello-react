@@ -12,6 +12,8 @@ import SignalsTodolist from "./components/Signals2"
 import Todolist from "./components/Todolist"
 import TodolistSignals from "./components/TodolistSignals"
 
+import Accordion from "./components/25Projects/accordian/Accordion"
+
 import Card from "./components/Card"
 import List from "./components/List"
 import Button from "./components/Button"
@@ -181,6 +183,14 @@ export default function App() {
       <hr />
       <h3>Todo List (signals)</h3>
       <TodolistSignals />
+
+      <hr />
+      <h2>25 Interview  Projects</h2>
+
+      <h3>1. Accordion</h3>
+      <Accordion />
+
+      
 
       <hr />
       <div ref={bottomRef} />
