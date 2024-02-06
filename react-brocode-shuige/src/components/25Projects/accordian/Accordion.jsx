@@ -3,47 +3,77 @@ import { useSignals } from "@preact/signals-react/runtime"
 import data from "./data"
 
 export default function Accordion() {
-  const showAnswerArray = useSignal([])
-  const multiSelectStatus = useSignal(true)
+  const selectedQuestions = useSignal([])
+  const multiSelectEnabled = useSignal(true)
+  const expandAllEnabled = useSignal(true)
+  const expandButtonLabel = useSignal("Expand All")
 
   const clickMultiSelectButton = () => {
-    multiSelectStatus.value = !multiSelectStatus.value
-    showAnswerArray.value = []
+    multiSelectEnabled.value = !multiSelectEnabled.value
+    selectedQuestions.value = []
   }
 
   const toggleAnswer = (id) => {
-    if (multiSelectStatus.value) {
-      if (showAnswerArray.value.includes(id)) {
-        showAnswerArray.value = showAnswerArray.value.filter(
+    if (multiSelectEnabled.value) {
+      if (selectedQuestions.value.includes(id)) {
+        selectedQuestions.value = selectedQuestions.value.filter(
           (itemID) => itemID !== id
         )
       } else {
-        showAnswerArray.value = [...showAnswerArray.value, id]
+        selectedQuestions.value = [...selectedQuestions.value, id]
       }
     } else {
-      if (showAnswerArray.value.includes(id)) {
-        showAnswerArray.value = showAnswerArray.value.filter(
+      if (selectedQuestions.value.includes(id)) {
+        selectedQuestions.value = selectedQuestions.value.filter(
           (itemID) => itemID !== id
         )
       } else {
-        showAnswerArray.value = [id]
+        selectedQuestions.value = [id]
       }
     }
+  }
+
+  // // 精简版
+  // const toggleAnswer = (id) => {
+  //   const newArray = selectedQuestions.value.includes(id)
+  //     ? selectedQuestions.value.filter((itemID) => itemID !== id)
+  //     : multiSelectEnabled.value
+  //     ? [...selectedQuestions.value, id]
+  //     : [id]
+  //   selectedQuestions.value = newArray
+  // }
+
+  const expandAll = () => {
+    // 初始expandAllEnabled为true，这个时候点击按钮，就会把id全部加入selectedQuestions.value
+    // 如果expandAllEnabled为false，则会清空selectedQuestions.value
+    selectedQuestions.value = expandAllEnabled.value
+      ? data.map((item) => item.id)
+      : []
+    expandButtonLabel.value = expandAllEnabled.value
+      ? "Collapse All"
+      : "Expand All"
+
+    // 每次都会循环变更expandAllEnabled.value状态
+    expandAllEnabled.value = !expandAllEnabled.value
   }
 
   useSignals()
 
   return (
     <div>
-      <button onClick={clickMultiSelectButton}>Multiple Select</button> <br />
-      Multiple Select Status: {multiSelectStatus.value.toString()} <br />
-      Selected Questions: {showAnswerArray.value.map((id) => `${id}, `)}
+      <button onClick={clickMultiSelectButton}>
+        Multiple Select {multiSelectEnabled.value.toString()}
+      </button>{" "}
+      <br /> <br />
+      <button onClick={expandAll}>{expandButtonLabel.value}</button> <br />
+      <br />
+      Selected Questions: {selectedQuestions.value.map((id) => `${id}, `)}
       <ul>
         {data && data.length > 0 ? (
           data.map((item) => (
             <li key={item.id} onClick={() => toggleAnswer(item.id)}>
               {item.question} <br />
-              {showAnswerArray.value.includes(item.id) && item.answer}
+              {selectedQuestions.value.includes(item.id) && item.answer}
             </li>
           ))
         ) : (
