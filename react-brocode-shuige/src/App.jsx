@@ -13,6 +13,7 @@ import Todolist from "./components/Todolist"
 import TodolistSignals from "./components/TodolistSignals"
 
 import Accordion from "./components/25Projects/accordian/Accordion"
+import GithubProfileSearch from "./components/25Projects/githubProfileSearch/GithubProfileSearch"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -185,12 +186,13 @@ export default function App() {
       <TodolistSignals />
 
       <hr />
-      <h2>25 Interview  Projects</h2>
+      <h2>25 React JS Component Projects</h2>
 
       <h3>1. Accordion</h3>
       <Accordion />
 
-      
+      <h3>2. Github Profile Search (Dummy Products Search)</h3>
+      <GithubProfileSearch />
 
       <hr />
       <div ref={bottomRef} />

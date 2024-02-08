@@ -1,0 +1,59 @@
+.product-container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1000px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid black; /* 添加边框，宽度为 1px，样式为实线，颜色为灰色 */
+  text-align: center; /* 让文本在水平方向上居中对齐 */
+  line-height: 2; /* 调整行间距为当前文字大小的 1.5 倍 */
+  font-weight: bold; /* 或者 font-weight: 700; */
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.input-wrapper input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.input-wrapper button {
+  cursor: pointer;
+}
+
+.product {
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.product-pic {
+  height: 250px;
+  /* aspect-ratio: 1/1; */
+  /* border-radius: 10%; */
+}
+
+.suggestion-box {
+  width: 100%;
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: scroll;
+  width: auto;
+}
+
+.suggestion-box ul {
+  list-style-type: none;
+  padding-left: 30px;
+  margin: auto;
+  text-align: left;
+}
