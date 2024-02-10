@@ -2,6 +2,7 @@ import { useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 import Suggestions from "./suggestions"
 import Product from "./product"
+import RatingStars from "./ratingStars"
 import "./styles.css"
 
 export default function GithubProfileSearch() {
@@ -52,7 +53,7 @@ export default function GithubProfileSearch() {
           : []
 
       filteredProducts.value = filteredData
-      console.log(filteredData)
+      //   console.log(filteredData)
       showDropdown.value = true
     } else showDropdown.value = false
   }
@@ -123,8 +124,9 @@ export default function GithubProfileSearch() {
       <br /> 大致思路：
       <ul>
         <li>先得到全部product data, 根据searchParam得到filtered data</li>
+        <li>弹出suggestion, click一下得到candidate</li>
         <li>
-          弹出suggestion, click一下得到candidate (往project
+          click选取innerText作为下一步搜索的title(往project
           component输入data和handleClickSuggestions callback function很精髓)
         </li>
         <li>根据candicate从全部product data里面选取出要渲染的data展示</li>

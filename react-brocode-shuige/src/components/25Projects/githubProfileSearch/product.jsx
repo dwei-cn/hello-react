@@ -1,5 +1,5 @@
 import React from "react"
-import StarRating from "./StarRating" // 导入星级评分组件
+import RatingStars from "./ratingStars" // 导入星级评分组件
 
 export default function Product({ product }) {
   // 直接取productData.value里面对应的json object key
@@ -14,7 +14,9 @@ export default function Product({ product }) {
             {" "}
             <div>Name: {title}</div>
             <div>Description: {description}</div>
-            <div>Rating: {rating}</div>
+            <div>
+              Rating: {rating} <RatingStars rating={rating} />{" "}
+            </div>
             <div>Brand: {brand}</div>
             <div>Price: {price}</div>
             <div>Stock: {stock}</div>
