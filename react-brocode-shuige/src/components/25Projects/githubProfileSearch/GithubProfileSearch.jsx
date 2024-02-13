@@ -1,8 +1,11 @@
-import { useSignal, useSignalEffect } from "@preact/signals-react"
+import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 import Suggestions from "./suggestions"
 import Product from "./product"
-import RatingStars from "./ratingStars"
+import StarRating from "./starRating"
+
+import { newRatingStatus, resetStatusRating } from "./product" // 在这个parent component就直接控制product里面的signals
+
 import "./styles.css"
 
 export default function GithubProfileSearch() {
@@ -12,8 +15,8 @@ export default function GithubProfileSearch() {
   const productList = useSignal([])
   const productData = useSignal(null)
   const filteredProducts = useSignal([])
-  const selectItemData = useSignal(null)
   const showDropdown = useSignal(false)
+  const selectItemData = useSignal("")
   const selectedItem = useSignal("")
 
   //   根据搜索词模糊搜索
@@ -59,6 +62,15 @@ export default function GithubProfileSearch() {
   }
 
   const handleClickSuggestions = (event) => {
+    // click的一瞬间，直接把product component里面的newRatingStatus和resetStatusRating的value都改了，打破了次元壁，牛逼！！！
+    // 只有当两个value有一个为true，执行下列
+    console.log(newRatingStatus.value || resetStatusRating.value)
+    if (newRatingStatus.value || resetStatusRating.value) {
+      newRatingStatus.value = !newRatingStatus.value
+      resetStatusRating.value = !resetStatusRating.value
+    }
+
+    console.log(newRatingStatus.value)
     showDropdown.value = false
     selectedItem.value = event.target.innerText
     filteredProducts.value = []
@@ -86,6 +98,8 @@ export default function GithubProfileSearch() {
   return (
     <>
       fake product data api: https://dummyjson.com/docs/products
+      <br /> <br />
+      Start Rating Demo: <StarRating />
       <br />
       <br />
       <div className="product-container">

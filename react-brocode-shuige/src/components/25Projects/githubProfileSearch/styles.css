@@ -57,3 +57,27 @@
   margin: auto;
   text-align: left;
 }
+
+.start-rating-container .active {
+  color: yellow;
+}
+
+.start-rating-container .inactive {
+  color: black;
+}
+
+.start-rating-container .new-rating {
+  color: red;
+}
+
+.img-nav {
+  cursor: pointer;
+}
+
+.img-nav .active-circle {
+  color: yellow;
+}
+
+.img-nav .inactive-circle {
+  color: black;
+}
