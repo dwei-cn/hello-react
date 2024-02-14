@@ -1,0 +1,29 @@
+.load-more-product-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  grid-template-columns: repeat(4, 1fr); /* 每行最多4列 */
+  gap: 10px;
+}
+
+.card {
+  width: 200px; /* 卡片宽度 */
+  height: 300px; /* 卡片高度 */
+  border: 1px solid #ccc; /* 边框样式 */
+  border-radius: 8px; /* 边框圆角 */
+  overflow: hidden; /* 内容溢出时隐藏 */
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card img {
+  width: 100%; /* 图片宽度填满卡片 */
+  height: 50%; /* 图片高度填满卡片 */
+  object-fit: cover; /* 图片填充模式：裁剪并保持宽高比 */
+}
+
+.product-text {
+  margin-top: 10px; /* 增加上边距 */
+
+  line-height: 1; /* 设置文字的行间距 */
+}

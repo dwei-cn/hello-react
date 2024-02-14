@@ -12,8 +12,9 @@ import SignalsTodolist from "./components/Signals2"
 import Todolist from "./components/Todolist"
 import TodolistSignals from "./components/TodolistSignals"
 
-import Accordion from "./components/25Projects/accordian/Accordion"
-import GithubProfileSearch from "./components/25Projects/githubProfileSearch/GithubProfileSearch"
+import Accordion from "./components/25Projects/accordian/accordion"
+import GithubProfileSearch from "./components/25Projects/githubProfileSearch/githubProfileSearch"
+import Loadmore from "./components/25Projects/load-more/loadmore"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -191,7 +192,11 @@ export default function App() {
       <h3>1. Accordion</h3>
       <Accordion />
 
-      <h3>2. Github Profile Search (Dummy Products Search)</h3>
+      <h3>2. Load More</h3>
+
+      <Loadmore />
+
+      <h3>3. Github Profile Search (Dummy Products Search)</h3>
       <GithubProfileSearch />
 
       <hr />

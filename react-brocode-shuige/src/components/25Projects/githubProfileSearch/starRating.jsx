@@ -4,7 +4,7 @@ import { useSignals } from "@preact/signals-react/runtime"
 
 import { FaStar } from "react-icons/fa"
 import "./styles.css"
-import GithubProfileSearch from "./GithubProfileSearch"
+import GithubProfileSearch from "./githubProfileSearch"
 
 // Define rating signal outside the component
 export const ratingValue = signal(0)
