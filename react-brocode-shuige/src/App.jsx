@@ -15,6 +15,7 @@ import TodolistSignals from "./components/TodolistSignals"
 import Accordion from "./components/25Projects/accordian/accordion"
 import GithubProfileSearch from "./components/25Projects/githubProfileSearch/githubProfileSearch"
 import Loadmore from "./components/25Projects/load-more/loadmore"
+import Tabs from "./components/25Projects/tabs/tabs"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -192,11 +193,14 @@ export default function App() {
       <h3>1. Accordion</h3>
       <Accordion />
 
-      <h3>2. Load More</h3>
+      <h3>2. Tabs</h3>
+      <Tabs />
+
+      <h3>3. Load More</h3>
 
       <Loadmore />
 
-      <h3>3. Github Profile Search (Dummy Products Search)</h3>
+      <h3>4. Github Profile Search (Dummy Products Search)</h3>
       <GithubProfileSearch />
 
       <hr />

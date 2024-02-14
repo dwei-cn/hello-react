@@ -1,0 +1,52 @@
+.tabs-container {
+  display: flex;
+}
+
+.tab {
+  flex: 0.1;
+
+  margin-right: 5px; /* 添加右侧间隔 */
+  border: 1px solid #ccc; /* 添加边框样式 */
+  border-color: black; /* 添加边框颜色 */
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 移除最后一个按钮的右侧间隔 */
+.tab:last-child {
+  margin-right: 0;
+}
+
+.tab.tab1 {
+  background-color: aquamarine;
+}
+
+.tab.tab2 {
+  background-color: pink;
+}
+
+.tab.tab3 {
+  background-color: blueviolet;
+}
+
+.bulletin {
+  display: inline-block; /* 将 bulletin 设置为内联块元素 */
+  border: 1px solid #ccc; /* 添加边框样式 */
+  border-color: black;
+  padding: 100px 115px; /* 调整 bulletin 的内边距 */
+  margin-top: 10px;
+  margin-left: 5px; /* 将 bulletin 移动到最后一个 tab 的右侧 */
+  text-align: center; /* 文字水平居中 */
+  line-height: 1; /* 设置行高为1，确保文字垂直居中 */
+}
+
+.bulletin.bt1 {
+  background-color: aquamarine;
+}
+.bulletin.bt2 {
+  background-color: pink;
+}
+.bulletin.bt3 {
+  background-color: blueviolet;
+}

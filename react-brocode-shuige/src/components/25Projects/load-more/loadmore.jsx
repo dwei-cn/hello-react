@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
+import Product from "./product"
 // import { RatingStars } from "../githubProfileSearch/ratingStars" // 导入星级评分组件
 
 import "./styles.css"
-
 export default function Loadmore() {
   const errorInfo = useSignal(null)
   const loadingStatus = useSignal(false)
@@ -12,23 +12,20 @@ export default function Loadmore() {
   const selectedOption = useSignal(9)
   const count = useSignal(0)
   const tooManyPicsFlag = useSignal(false)
-  const tooManyPicsFlag2 = useSignal(false)
 
-  //   根据搜索词模糊搜索
+  // 根据搜索词模糊搜索
   const fetchDummyProductDataList = async () => {
     try {
+      const limit = 1 * selectedOption.value
+      const skip = count.value * selectedOption.value
       const res = await fetch(
-        // `https://dummyjson.com/products/${searchParam.value}`
-        `https://dummyjson.com/products?limit=${
-          // count.value === 0 ? 3 : selectedOption.value
-          selectedOption.value
-          // }&skip=${count.value === 0 ? 0 : count.value * selectedOption.value}`     // 初始化显示的是
-        }&skip=${count.value * selectedOption.value}` // 初始化显示的是
+        `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
       )
       const result = await res.json()
 
+      // 每次用prevData合并新的result.products
       if (result && result.products && result.products.length) {
-        productData.value = [...productData.value, ...result.products] //合并array，两者都是array
+        productData.value = [...productData.value, ...result.products] //每一把合并array，两者都是array
         console.log("Loading...")
         loadingStatus.value = false
       }
@@ -37,9 +34,6 @@ export default function Loadmore() {
       console.log(error)
       errorInfo.value = error
     }
-
-    // console.log(count.value)
-    // console.log(productData.value)
   }
 
   const handleOptionChange = (event) => {
@@ -49,23 +43,24 @@ export default function Loadmore() {
   }
 
   const handleReset = () => {
+    // 使用对象分解重置多个状态变量
     productData.value = []
     tooManyPicsFlag.value = false
     count.value = 0
-    selectedOption.value = 9
+    // selectedOption.value = 9
   }
 
   useSignalEffect(() => {
     fetchDummyProductDataList()
-  }, [count.value])
+  })
 
   useSignalEffect(() => {
-    if (productData && productData.value.length > 20) {
-      tooManyPicsFlag.value = true
-    }
-  }, [productData.value])
+    // 简化判断条件
+    tooManyPicsFlag.value = productData.value.length > 20
+  })
 
   useSignals()
+
   return (
     <div className="gallery">
       Show pictures:{" "}
@@ -77,26 +72,9 @@ export default function Loadmore() {
         <option value="18">18</option>
       </select>
       <div className="load-more-product-container">
-        {productData.value && // 一定要有这个判定，渲染之前添加了条件检查 productData.value !== null，以确保 productData.value 不为 null 才会调用 map 方法。这样就可以避免出现报错。
-          productData.value.map((item, index) => (
-            <div key={index} className="card">
-              <img src={item.thumbnail} alt={item.title} />
-              <div className="product-text">
-                <strong>{item.title}</strong>
-                <p>Brand: {item.brand}</p>
-                <div>
-                  Rating: {item.rating}
-                  {/* <RatingStars rating={item.rating} />{" "} */}
-                </div>
-                <p>Price: {item.price}</p>
-                <p>Stock: {item.stock}</p>
-              </div>
-            </div>
-          ))}
+        <Product productData={productData.value} />
       </div>
       <div>
-        {" "}
-        {/* <button onClick={() => (count.value -= 1)}>Load Fewer</button>{" "} */}
         <button
           onClick={() => (count.value += 1)}
           disabled={tooManyPicsFlag.value}
@@ -105,7 +83,7 @@ export default function Loadmore() {
         </button>
         {tooManyPicsFlag.value && (
           <>
-            <p>You have reached to 20 products and can't load any more.</p>
+            <p>You have reached 20 products and can't load anymore.</p>
             <button onClick={handleReset}>Reset</button>
           </>
         )}
