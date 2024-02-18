@@ -9,7 +9,7 @@ export default function Loadmore() {
   const errorInfo = useSignal(null)
   const loadingStatus = useSignal(false)
   const productData = useSignal([])
-  const selectedOption = useSignal(9)
+  const selectedOption = useSignal(3)
   const count = useSignal(0)
   const tooManyPicsFlag = useSignal(false)
 

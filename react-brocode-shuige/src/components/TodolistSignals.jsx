@@ -1,14 +1,20 @@
 import { signal, useSignal } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 
-export const todos2 = signal([
+export const initialEvents = [
   { name: "吃饭", completed: false },
   { name: "睡觉", completed: false },
   { name: "打豆豆", completed: false },
-])
+]
+
+export const todos2 = signal(initialEvents)
+
+export function updateEvents(newEvents) {
+  initialEvents.splice(0, initialEvents.length, ...newEvents)
+}
 
 export default function TodolistSignals() {
-  console.log("Rendering: todolistsignals")
+  // console.log("Rendering: todolistsignals")
   // const [todos, setTodos] = signal([
   //   { name: "吃饭", completed: false },
   //   { name: "睡觉", completed: false },
@@ -60,13 +66,7 @@ export default function TodolistSignals() {
 
   const resetTodos = () =>
     (todos2.value =
-      ([
-        { name: "吃饭", completed: false },
-        { name: "睡觉", completed: false },
-        { name: "打豆豆", completed: false },
-      ],
-      (editFlag2.value = false),
-      (newtodo2.value = "")))
+      (initialEvents, (editFlag2.value = false), (newtodo2.value = "")))
 
   useSignals()
 
@@ -89,8 +89,9 @@ export default function TodolistSignals() {
             ></input>
             {/* 如果是completed状态，就显示strikethrough，都则就是一般的name */}
             {item.completed ? <s> {item.name}</s> : item.name}
-            {""} <button onClick={() => removeTodo(index)}>❌</button>
+            {""}
             <button onClick={() => getEditInfo(index)}>✏️</button>
+            <button onClick={() => removeTodo(index)}>❌</button>
             {/* 当需要edit，而且edit的index和当前index相同的情况下 */}
             {/* boolean判断是否render or not */}
             {editFlag2.value && editIndex2.value === index && (

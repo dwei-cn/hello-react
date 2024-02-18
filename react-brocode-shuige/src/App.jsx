@@ -13,9 +13,11 @@ import Todolist from "./components/Todolist"
 import TodolistSignals from "./components/TodolistSignals"
 
 import Accordion from "./components/25Projects/accordian/accordion"
-import GithubProfileSearch from "./components/25Projects/githubProfileSearch/githubProfileSearch"
+import GithubProfileSearch from "./components/25Projects/github-profile-search/githubProfileSearch"
 import Loadmore from "./components/25Projects/load-more/loadmore"
 import Tabs from "./components/25Projects/tabs/tabs"
+import FortuneWheel from "./components/25Projects/fortune-wheel/fortuneWheel"
+import Modalpopups from "./components/25Projects/modal-popups/modalpopups"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -200,7 +202,13 @@ export default function App() {
 
       <Loadmore />
 
-      <h3>4. Github Profile Search (Dummy Products Search)</h3>
+      <h3>4. Fortune Wheel</h3>
+      <FortuneWheel />
+
+      <h3>4. Modal Popups</h3>
+      <Modalpopups />
+
+      <h3>6. Github Profile Search (Dummy Products Search)</h3>
       <GithubProfileSearch />
 
       <hr />

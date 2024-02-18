@@ -8,7 +8,7 @@
 
 .card {
   width: 200px; /* 卡片宽度 */
-  height: 300px; /* 卡片高度 */
+  height: 330px; /* 卡片高度 */
   border: 1px solid #ccc; /* 边框样式 */
   border-radius: 8px; /* 边框圆角 */
   overflow: hidden; /* 内容溢出时隐藏 */

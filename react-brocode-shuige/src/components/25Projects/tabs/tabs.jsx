@@ -33,7 +33,7 @@ export default function Tabs() {
       <div>
         {showTab.value && (
           <div className={`bulletin bt${currentIndex.value + 1}`}>
-            Rank {currentIndex.value + 1}
+            This is content for tab {currentIndex.value + 1}
           </div>
         )}
       </div>
