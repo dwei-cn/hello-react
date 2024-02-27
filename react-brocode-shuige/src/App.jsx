@@ -18,6 +18,7 @@ import Loadmore from "./components/25Projects/load-more/loadmore"
 import Tabs from "./components/25Projects/tabs/tabs"
 import FortuneWheel from "./components/25Projects/fortune-wheel/fortuneWheel"
 import Modalpopups from "./components/25Projects/modal-popups/modalpopups"
+import UseFetchHookTest from "./components/25Projects/use-fetch/test"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -90,6 +91,7 @@ export default function App() {
   return (
     <>
       <Header />
+
       <UserGreeting isLoggedIn={logInInfo.isLoggedIn} name={logInInfo.name} />
       <hr />
 
@@ -205,11 +207,14 @@ export default function App() {
       <h3>4. Fortune Wheel</h3>
       <FortuneWheel />
 
-      <h3>4. Modal Popups</h3>
+      <h3>5. Modal Popups</h3>
       <Modalpopups />
 
       <h3>6. Github Profile Search (Dummy Products Search)</h3>
       <GithubProfileSearch />
+
+      <h3>7. Use Fetch</h3>
+      <UseFetchHookTest url={"https://dummyjson.com/products"} preview={true} />
 
       <hr />
       <div ref={bottomRef} />
