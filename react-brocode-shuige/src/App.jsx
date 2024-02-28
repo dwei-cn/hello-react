@@ -11,6 +11,7 @@ import Signals2 from "./components/Signals12"
 import SignalsTodolist from "./components/Signals2"
 import Todolist from "./components/Todolist"
 import TodolistSignals from "./components/TodolistSignals"
+import JSAdvanced from "./components/JSAdvanced"
 
 import Accordion from "./components/25Projects/accordian/accordion"
 import GithubProfileSearch from "./components/25Projects/github-profile-search/githubProfileSearch"
@@ -215,6 +216,9 @@ export default function App() {
 
       <h3>7. Use Fetch</h3>
       <UseFetchHookTest url={"https://dummyjson.com/products"} preview={true} />
+
+      <h2>Advanced JavaScript</h2>
+      <JSAdvanced />
 
       <hr />
       <div ref={bottomRef} />

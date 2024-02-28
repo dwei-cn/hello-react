@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 
-export default function useFetch(url, options = {}, preview) {
+export default function useFetch(url, options = {}, preview = false) {
   // 3 states
   const data = useSignal(null)
   const pending = useSignal(false)
@@ -10,11 +10,13 @@ export default function useFetch(url, options = {}, preview) {
 
   async function fetchData() {
     pending.value = true
+
     try {
       const response = await fetch(url, { ...options })
       if (!response.ok) {
         throw new Error(response.statusText)
       }
+
       let result = await response.json()
 
       // Check if preview is true and result is an array or an object
@@ -23,6 +25,8 @@ export default function useFetch(url, options = {}, preview) {
         // Slice the products array to get the first 5 items
         result.products = result.products.slice(0, 5)
       }
+
+      console.log(typeof result)
 
       data.value = result
       error.value = null

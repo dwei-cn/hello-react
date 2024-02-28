@@ -4,7 +4,7 @@ import useFetch from "."
 export default function UseFetchHookTest({ url, preview }) {
   const { data, pending, error } = useFetch(url, {}, preview)
 
-  console.log(data, pending, error)
+//   console.log(data, pending, error)
 
   return (
     <div>
