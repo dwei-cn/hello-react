@@ -20,6 +20,7 @@ import Tabs from "./components/25Projects/tabs/tabs"
 import FortuneWheel from "./components/25Projects/fortune-wheel/fortuneWheel"
 import Modalpopups from "./components/25Projects/modal-popups/modalpopups"
 import UseFetchHookTest from "./components/25Projects/use-fetch/test"
+import ReactHooksExplained from "./components/25Projects/react-hooks"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -219,6 +220,12 @@ export default function App() {
 
       <h2>Advanced JavaScript</h2>
       <JSAdvanced />
+
+      <h2>
+        React Hooks Explained <i>by Sangam Mukherjee</i>
+      </h2>
+
+      <ReactHooksExplained />
 
       <hr />
       <div ref={bottomRef} />
