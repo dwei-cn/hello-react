@@ -83,7 +83,17 @@ export default function App() {
   useEffect(
     () => {
       // Scroll to the bottom when the component mounts or when the content changes
-      bottomRef.current.scrollIntoView({ behavior: "smooth" })
+
+      const scrollToFooter = () => {
+        if (bottomRef.current) {
+          bottomRef.current.scrollIntoView({ behavior: "smooth" })
+        }
+      }
+
+      // Add a delay before scrolling to allow time for DOM update
+      const timeout = setTimeout(scrollToFooter, 1000)
+
+      return () => clearTimeout(timeout) // Clear timeout on component unmount
     },
     [
       /* dependencies */
