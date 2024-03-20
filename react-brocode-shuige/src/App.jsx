@@ -21,6 +21,8 @@ import FortuneWheel from "./components/25Projects/fortune-wheel/fortuneWheel"
 import Modalpopups from "./components/25Projects/modal-popups/modalpopups"
 import UseFetchHookTest from "./components/25Projects/use-fetch/test"
 import ReactHooksExplained from "./components/25Projects/react-hooks"
+import UseOnclickOutsideTest from "./components/25Projects/use-outsite-click-hook"
+import UseWindowResizeTest from "./components/25Projects/use-window-resize"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -228,14 +230,26 @@ export default function App() {
       <h3>7. Use Fetch</h3>
       <UseFetchHookTest url={"https://dummyjson.com/products"} preview={true} />
 
+      <h3>8. UseOnClickOutside</h3>
+      <UseOnclickOutsideTest />
+
+      <h3>9. UseWindowResize</h3>
+      <UseWindowResizeTest />
+
       <h2>Advanced JavaScript</h2>
-      <JSAdvanced />
+      <details>
+        {" "}
+        <summary>展开全部</summary>
+        <JSAdvanced />
+      </details>
 
       <h2>
         React Hooks Explained <i>by Sangam Mukherjee</i>
       </h2>
-
-      <ReactHooksExplained />
+      <details>
+        <summary>展开全部</summary>
+        <ReactHooksExplained />
+      </details>
 
       <hr />
       <div ref={bottomRef} />
