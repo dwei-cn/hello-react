@@ -23,6 +23,12 @@ import UseFetchHookTest from "./components/25Projects/use-fetch/test"
 import ReactHooksExplained from "./components/25Projects/react-hooks"
 import UseOnclickOutsideTest from "./components/25Projects/use-outsite-click-hook"
 import UseWindowResizeTest from "./components/25Projects/use-window-resize"
+import ScrollUpDown from "./components/25Projects/scroll-top-bottom"
+
+import Navbar from "./components/25Projects/food-recipe"
+import HomePage from "./components/25Projects/food-recipe/pages/home"
+import Favorites from "./components/25Projects/food-recipe/pages/favorites"
+import Details from "./components/25Projects/food-recipe/pages/details"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -36,10 +42,9 @@ import UseMemoComp from "./components/UseMemoComp"
 
 import movieData from "./assets/movieData"
 import movieColumns from "./assets/movieColumns"
-
 import DataTableDIY from "./components/DataTable"
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { Routes, Route, Link } from "react-router-dom"
 import PageAbout from "./components/PageAbout"
 import PageNews from "./components/PageNotFound"
 import PageHome from "./components/PageHome"
@@ -105,39 +110,30 @@ export default function App() {
   return (
     <>
       <Header />
-
       <UserGreeting isLoggedIn={logInInfo.isLoggedIn} name={logInInfo.name} />
       <hr />
-
       <Card name={name1.name} age={name1.age} isNewbie={name1.isNewbie} />
       <Card name={name2.name} age={name2.age} isNewbie={name2.isNewbie} />
       {/* <Card name={name3.name} />
       <Card /> */}
-
       <hr />
       {/* 只有当长度大于0才会render */}
       {fruits.length > 0 && <List items={fruits} category="Fruits" />}
       {vegetables.length && <List items={vegetables} category="Vegetables" />}
-
       <hr />
       <Button />
-
       <hr />
       <h3>Delivery Info</h3>
       <UseStateComponent />
-
       <hr />
       <h3>Color Picker</h3>
       <ColorPicker />
-
       <hr />
       <h3>DataTable</h3>
       <DataTableDIY data={movieData} columns={movieColumns} />
-
       <hr />
       <h3>Update Objects And Array</h3>
       <UpdateObjectArray />
-
       <hr />
       <h3>Hooks</h3>
       <FetchData />
@@ -149,7 +145,6 @@ export default function App() {
       </ContextExample.Provider>
       <UseReducerComp />
       <UseMemoComp />
-
       <hr />
       <h3>React Router</h3>
       <>
@@ -172,77 +167,73 @@ export default function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </>
-
       <hr />
       <h3>React Form 进阶</h3>
       <UseFormComp />
-
       <h3>Redux Toolkit</h3>
       <ReduxToolkitComp />
-
       <hr />
       <h3>Tic-Tac-Toe</h3>
       <Tictactoe />
-
       <hr />
       <h3>Signals Basic 1</h3>
       <Signals1 />
-
       <h3>Signals Basic 2</h3>
       <Signals2 />
-
       <hr />
       <h3>Signals Intermediate</h3>
-
       <SignalsTodolist />
-
       <hr />
       <h3>Todo List (react hook)</h3>
-
       <Todolist />
-
       <hr />
       <h3>Todo List (signals)</h3>
       <TodolistSignals />
-
       <hr />
       <h2>25 React JS Component Projects</h2>
-
       <h3>1. Accordion</h3>
       <Accordion />
-
       <h3>2. Tabs</h3>
       <Tabs />
-
       <h3>3. Load More</h3>
-
       <Loadmore />
-
       <h3>4. Fortune Wheel</h3>
       <FortuneWheel />
-
       <h3>5. Modal Popups</h3>
       <Modalpopups />
-
       <h3>6. Github Profile Search (Dummy Products Search)</h3>
       <GithubProfileSearch />
-
       <h3>7. Use Fetch</h3>
       <UseFetchHookTest url={"https://dummyjson.com/products"} preview={true} />
-
       <h3>8. UseOnClickOutside</h3>
+      利用useEffect监听ref.current的位置
       <UseOnclickOutsideTest />
-
       <h3>9. UseWindowResize</h3>
+      利用useEffect监听window.innerWidth和window.innerHeight的值
       <UseWindowResizeTest />
-
+      <h3>10. Scroll To Particular Section</h3>
+      <p>埋下useRef然后利用ref.current.scrollIntoView在不同的ref之间跳转</p>
+      <details>
+        <summary>展开全部</summary>
+        <ScrollUpDown />
+      </details>
+      <h3>11. Food Recipe</h3>
+      <div>
+        <div className="min-h-screen p-6 bg-white text-grey-600 text-lg">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/recipe-item/:id" element={<Details />} />
+          </Routes>
+        </div>
+      </div>
       <h2>Advanced JavaScript</h2>
       <details>
         {" "}
         <summary>展开全部</summary>
         <JSAdvanced />
       </details>
-
       <h2>
         React Hooks Explained <i>by Sangam Mukherjee</i>
       </h2>
@@ -250,7 +241,6 @@ export default function App() {
         <summary>展开全部</summary>
         <ReactHooksExplained />
       </details>
-
       <hr />
       <div ref={bottomRef} />
       <Footer />

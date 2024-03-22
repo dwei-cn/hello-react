@@ -17,14 +17,13 @@ export default function useWindowResize() {
   }
 
   useLayoutEffect(() => {
-    handleResize()
+    handleResize() // handleResize在窗口大小发生变化时通过 resize 事件触发再次运行
     window.addEventListener("resize", handleResize)
 
     return () => {
       window.removeEventListener("resize", handleResize)
     }
-  }, [windowSize])
-  
+  }, [])
   useSignals()
   return windowSize.value
 }

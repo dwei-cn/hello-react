@@ -5,7 +5,7 @@ import { useSignals } from "@preact/signals-react/runtime"
 
 export default function UseWindowResizeTest() {
   const windowSize = useWindowResize()
-  const { width, height } = windowSize
+  const { width, height } = windowSize //将windowSize destructing
 
   return (
     <div>
