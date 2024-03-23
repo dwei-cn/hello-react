@@ -29,6 +29,7 @@ import Navbar from "./components/25Projects/food-recipe"
 import HomePage from "./components/25Projects/food-recipe/pages/home"
 import Favorites from "./components/25Projects/food-recipe/pages/favorites"
 import Details from "./components/25Projects/food-recipe/pages/details"
+import FoodRecipeState from "./components/25Projects/food-recipe/context"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -219,14 +220,17 @@ export default function App() {
       </details>
       <h3>11. Food Recipe</h3>
       <div>
-        <div className="min-h-screen p-6 bg-white text-grey-600 text-lg">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/recipe-item/:id" element={<Details />} />
-          </Routes>
-        </div>
+        <FoodRecipeState>
+          useContext + useSignal
+          <div className="min-h-screen p-6 bg-white text-grey-600 text-lg">
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/recipe-item/:id" element={<Details />} />
+            </Routes>
+          </div>
+        </FoodRecipeState>
       </div>
       <h2>Advanced JavaScript</h2>
       <details>

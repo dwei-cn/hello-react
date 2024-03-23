@@ -1,21 +1,31 @@
-import React from "react"
+import React, { useContext } from "react"
 import { NavLink } from "react-router-dom"
+import { FoodRecipeContext } from "./context"
+import { useSignals } from "@preact/signals-react/runtime"
 
 export default function Navbar() {
+  const { searchParam, handleSubmit } = useContext(FoodRecipeContext)
+  //   console.log(searchParam)
+  useSignals()
   return (
     <nav>
       <NavLink to={"/"}>
         <h4 className="">Food Recipe</h4>
       </NavLink>
 
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="search"
+          value={searchParam.value}
+          onChange={(e) => {
+            searchParam.value = e.target.value
+          }}
           placeholder="Enter Items..."
           className="bg-white/75"
         />
       </form>
+
       <ul>
         <li>
           {" "}

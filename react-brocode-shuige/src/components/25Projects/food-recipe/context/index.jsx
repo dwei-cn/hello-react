@@ -1,0 +1,70 @@
+import { useState, createContext } from "react"
+import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
+import { useSignals } from "@preact/signals-react/runtime"
+
+export const FoodRecipeContext = createContext(null)
+
+export default function FoodRecipeState({ children }) {
+  const searchParam = useSignal("banana")
+  const loading = useSignal("")
+  const recipeList = useSignal([])
+  const recipeDetailsData = useSignal(null)
+  const favList = useSignal([])
+  
+
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    try {
+      const res = await fetch(
+        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam.value}`
+      )
+      const data = await res.json()
+
+      if (data?.data?.recipes) {
+        recipeList.value = data?.data?.recipes
+        loading.value = false
+        searchParam.value = ""
+      }
+    //   console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddFavList = (itemId) => {
+    // 使用Set来存储favList.value中的唯一元素
+    const uniqueItems = new Set(favList.value)
+    // 添加新元素到Set中
+    uniqueItems.add(itemId)
+    // 将Set转换回数组形式
+    const updatedFavList = Array.from(uniqueItems)
+    // 更新favList.value
+    favList.value = updatedFavList
+  }
+
+  const handleRemoveFromFavList = (itemId) => {
+    const updatedFavList = favList.value.filter((item) => item !== itemId)
+    favList.value = updatedFavList
+  }
+
+
+
+  useSignals()
+  return (
+    <FoodRecipeContext.Provider
+      value={{
+        searchParam,
+        loading,
+        recipeList,
+        recipeDetailsData,
+        favList,
+        handleSubmit,
+        handleAddFavList, 
+        handleRemoveFromFavList
+      }}
+    >
+      {children}
+    </FoodRecipeContext.Provider>
+  )
+}
