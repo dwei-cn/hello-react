@@ -20,9 +20,6 @@ export default function Details() {
           `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
         )
         const data = await res.json()
-        // console.log(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
-        // console.log(recipeDetailsData.value)
-        // console.log("current id: " + favList.value)
 
         if (data?.data) {
           recipeDetailsData.value = data?.data
@@ -33,13 +30,8 @@ export default function Details() {
       }
     }
     getRecipeDetails()
-    // return () => {
-    //   // 在这里执行清除操作，例如重置数据
-    //   recipeDetailsData.value = null
-    // }
   }, [id])
 
-  // console.log(recipeDetailsData.value)
   useSignals()
   return (
     <div>
@@ -48,14 +40,18 @@ export default function Details() {
       </div>
       <div>{recipeDetailsData?.value.recipe.publisher}</div>
       <div>{recipeDetailsData?.value.recipe.title}</div>{" "}
-      {favList.value.includes(id) ? "❤️" : null} <br />
-      <button onClick={() => handleAddFavList(id)}>
-        Save as favorite
-      </button>{" "}
-      <br />
-      <button onClick={() => handleRemoveFromFavList(id)}>
-        Remove favorite
-      </button>
+      {favList.value[id] ? "❤️" : null} <br />
+      {!favList.value[id] ? (
+        <button
+          onClick={() => handleAddFavList(recipeDetailsData?.value.recipe)}
+        >
+          Save as favorite
+        </button>
+      ) : (
+        <button onClick={() => handleRemoveFromFavList(id)}>
+          Remove favorite
+        </button>
+      )}
     </div>
   )
 }

@@ -5,13 +5,11 @@ import { useSignals } from "@preact/signals-react/runtime"
 export const FoodRecipeContext = createContext(null)
 
 export default function FoodRecipeState({ children }) {
-  const searchParam = useSignal("banana")
+  const searchParam = useSignal("apple")
   const loading = useSignal("")
   const recipeList = useSignal([])
   const recipeDetailsData = useSignal(null)
   const favList = useSignal([])
-  
-
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -26,29 +24,46 @@ export default function FoodRecipeState({ children }) {
         loading.value = false
         searchParam.value = ""
       }
-    //   console.log(data)
+      //   console.log(data)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleAddFavList = (itemId) => {
-    // 使用Set来存储favList.value中的唯一元素
-    const uniqueItems = new Set(favList.value)
-    // 添加新元素到Set中
-    uniqueItems.add(itemId)
-    // 将Set转换回数组形式
-    const updatedFavList = Array.from(uniqueItems)
+  //   const handleAddFavList = (itemId) => {
+  //     // 使用Set来存储favList.value中的唯一元素
+  //     const uniqueItems = new Set(favList.value)
+  //     // 添加新元素到Set中
+  //     uniqueItems.add(itemId)
+  //     // 将Set转换回数组形式
+  //     const updatedFavList = Array.from(uniqueItems)
+  //     // 更新favList.value
+  //     favList.value = updatedFavList
+  //   }
+
+  const handleAddFavList = (recipeDetailsData) => {
+    // 使用对象来存储favList.value，以id作为键
+    const updatedFavList = { ...favList.value }
+
+    // 添加新元素到对象中，以recipeDetailsData的id作为键
+    updatedFavList[recipeDetailsData.id] = recipeDetailsData
+
+    // 更新favList.value
+    favList.value = updatedFavList
+
+    console.log(favList.value)
+  }
+
+  const handleRemoveFromFavList = (id) => {
+    // 使用对象来存储favList.value，以id作为键
+    const updatedFavList = { ...favList.value }
+
+    // 从对象中移除指定id的元素
+    delete updatedFavList[id]
+
     // 更新favList.value
     favList.value = updatedFavList
   }
-
-  const handleRemoveFromFavList = (itemId) => {
-    const updatedFavList = favList.value.filter((item) => item !== itemId)
-    favList.value = updatedFavList
-  }
-
-
 
   useSignals()
   return (
@@ -60,8 +75,8 @@ export default function FoodRecipeState({ children }) {
         recipeDetailsData,
         favList,
         handleSubmit,
-        handleAddFavList, 
-        handleRemoveFromFavList
+        handleAddFavList,
+        handleRemoveFromFavList,
       }}
     >
       {children}

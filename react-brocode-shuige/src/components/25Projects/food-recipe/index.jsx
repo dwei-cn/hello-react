@@ -5,7 +5,7 @@ import { useSignals } from "@preact/signals-react/runtime"
 
 export default function Navbar() {
   const { searchParam, handleSubmit } = useContext(FoodRecipeContext)
-  //   console.log(searchParam)
+
   useSignals()
   return (
     <nav>

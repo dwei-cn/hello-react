@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { useSignals } from "@preact/signals-react/runtime"
 
+
 export default function ItemCard({ item, favList }) {
   useSignals()
   return (
@@ -28,7 +29,7 @@ export default function ItemCard({ item, favList }) {
       <span>
         <p>{item.publisher}</p>
         <h3>{item.title}</h3>
-        {item.id.toString().slice(-5)} {favList.includes(item.id) && "❤️"}
+        {item.id.toString().slice(-5)} {favList && favList[item.id] && "❤️"}
         <br />
         <br />
         <Link
