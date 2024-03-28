@@ -15,7 +15,7 @@ export default function Favorites() {
       Favorites
       {favoriteItems && favoriteItems.length > 0 ? (
         favoriteItems.map((value) => (
-          <ItemCard item={value} favList={favList.value} />
+          <ItemCard item={value} />
         ))
       ) : (
         <div>Nothing to show...</div>

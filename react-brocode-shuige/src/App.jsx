@@ -221,8 +221,19 @@ export default function App() {
       <h3>11. Food Recipe</h3>
       <div>
         <FoodRecipeState>
-          useContext + useSignal
-          <div className="min-h-screen p-6 bg-white text-grey-600 text-lg">
+          <li>Router: 创建router</li>
+          <li>NavLink: 创建Nav bar</li>
+          <li>
+            createContext / useContext:
+            各个component之间共享state，各自按需useContext
+          </li>
+          <li>
+            useParam: 用于获取当前路由参数的值，用来访问和使用URL中的动态参数。
+          </li>
+          <li>useNavigate: 用来自动跳转到某个界面</li>
+          <li>Link: 创建link</li>
+
+          <div>
             <Navbar />
             <Routes>
               <Route path="/" element={<HomePage />} />

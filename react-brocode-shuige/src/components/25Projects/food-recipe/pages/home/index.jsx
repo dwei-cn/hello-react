@@ -4,7 +4,7 @@ import ItemCard from "../../itemCard"
 import { useSignals } from "@preact/signals-react/runtime"
 
 export default function HomePage() {
-  const { recipeList, loading, favList } = useContext(FoodRecipeContext)
+  const { recipeList, loading } = useContext(FoodRecipeContext)
   if (loading) {
     ;<div>Loading...Please wait.</div>
   }
@@ -19,7 +19,7 @@ export default function HomePage() {
     >
       {recipeList.value && recipeList.value.length > 0 ? (
         recipeList.value.map((item) => (
-          <ItemCard item={item} favList={favList.value} />
+          <ItemCard item={item} />
         ))
       ) : (
         <div>Nothing to show...</div>

@@ -1,6 +1,7 @@
 import { useState, createContext } from "react"
 import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
+import { useNavigate } from "react-router-dom"
 
 export const FoodRecipeContext = createContext(null)
 
@@ -10,6 +11,7 @@ export default function FoodRecipeState({ children }) {
   const recipeList = useSignal([])
   const recipeDetailsData = useSignal(null)
   const favList = useSignal([])
+  const navigate = useNavigate()
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -23,6 +25,11 @@ export default function FoodRecipeState({ children }) {
         recipeList.value = data?.data?.recipes
         loading.value = false
         searchParam.value = ""
+
+        // Get the navigate function from useNavigate
+
+        // Navigate to the desired route, here is home page
+        navigate("/")
       }
       //   console.log(data)
     } catch (error) {

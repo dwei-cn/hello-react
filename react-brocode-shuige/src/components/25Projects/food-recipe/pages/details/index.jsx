@@ -23,34 +23,41 @@ export default function Details() {
 
         if (data?.data) {
           recipeDetailsData.value = data?.data
-          console.log(recipeDetailsData.value)
+          // console.log(recipeDetailsData.value)
         }
       } catch (error) {
         console.log(error)
       }
     }
     getRecipeDetails()
-  }, [id])
+  }, [id, recipeDetailsData])
+
+  //  console.log(recipeDetailsData?.value.recipe)
 
   useSignals()
+
   return (
     <div>
-      <div>
-        <img src={recipeDetailsData?.value.recipe.image_url}></img>
-      </div>
-      <div>{recipeDetailsData?.value.recipe.publisher}</div>
-      <div>{recipeDetailsData?.value.recipe.title}</div>{" "}
-      {favList.value[id] ? "❤️" : null} <br />
-      {!favList.value[id] ? (
-        <button
-          onClick={() => handleAddFavList(recipeDetailsData?.value.recipe)}
-        >
-          Save as favorite
-        </button>
+      {recipeDetailsData.value ? ( // data有无的判别式可太重要了
+        <div>
+          <img src={recipeDetailsData?.value.recipe.image_url}></img>
+          <div>{recipeDetailsData?.value.recipe.publisher}</div>
+          <div>{recipeDetailsData?.value.recipe.title}</div>
+          {favList.value[id] ? "❤️" : null} <br />
+          {!favList.value[id] ? (
+            <button
+              onClick={() => handleAddFavList(recipeDetailsData?.value.recipe)}
+            >
+              Save As Favorite
+            </button>
+          ) : (
+            <button onClick={() => handleRemoveFromFavList(id)}>
+              Remove Favorite
+            </button>
+          )}
+        </div>
       ) : (
-        <button onClick={() => handleRemoveFromFavList(id)}>
-          Remove favorite
-        </button>
+        <div>Loading...</div>
       )}
     </div>
   )

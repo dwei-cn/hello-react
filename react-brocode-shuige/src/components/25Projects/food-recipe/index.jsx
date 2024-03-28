@@ -9,8 +9,8 @@ export default function Navbar() {
   useSignals()
   return (
     <nav>
-      <NavLink to={"/"}>
-        <h4 className="">Food Recipe</h4>
+      <NavLink to={"/"} style={{ textDecoration: "none" }}>
+        <h4>Food Recipe</h4>
       </NavLink>
 
       <form onSubmit={handleSubmit}>
@@ -22,18 +22,22 @@ export default function Navbar() {
             searchParam.value = e.target.value
           }}
           placeholder="Enter Items..."
-          className="bg-white/75"
+          //   className="bg-white/75"
         />
       </form>
 
       <ul>
         <li>
           {" "}
-          <NavLink to={"/"}>Home</NavLink>
+          <NavLink to={"/"} style={{ textDecoration: "none" }}>
+            Home
+          </NavLink>
         </li>
         <li>
           {" "}
-          <NavLink to={"/favorites"}>Favorites</NavLink>
+          <NavLink to={"/favorites"} style={{ textDecoration: "none" }}>
+            Favorites
+          </NavLink>
         </li>
       </ul>
     </nav>
