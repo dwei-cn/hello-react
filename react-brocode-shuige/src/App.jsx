@@ -31,6 +31,11 @@ import Favorites from "./components/25Projects/food-recipe/pages/favorites"
 import Details from "./components/25Projects/food-recipe/pages/details"
 import FoodRecipeState from "./components/25Projects/food-recipe/context"
 
+import NavbarShopping from "./components/25Projects/shopping-cart"
+import HomeShopping from "./components/25Projects/shopping-cart/pages/home"
+import LoginShopping from "./components/25Projects/shopping-cart/pages/login"
+import ContactShopping from "./components/25Projects/shopping-cart/pages/Contact"
+
 import Card from "./components/Card"
 import List from "./components/List"
 import Button from "./components/Button"
@@ -45,7 +50,6 @@ import movieData from "./assets/movieData"
 import movieColumns from "./assets/movieColumns"
 import DataTableDIY from "./components/DataTable"
 
-import { Routes, Route, Link } from "react-router-dom"
 import PageAbout from "./components/PageAbout"
 import PageNews from "./components/PageNotFound"
 import PageHome from "./components/PageHome"
@@ -53,6 +57,10 @@ import PageNotFound from "./components/PageNotFound"
 import UseFormComp from "./components/UseFormComp"
 import UseFetchComp from "./components/UseFetchComp"
 import ReduxToolkitComp from "./components/ReduxToolkitComp"
+
+import { Routes, Route, Link } from "react-router-dom"
+import { Provider } from "react-redux"
+// import { store } from "./components/25Projects/shopping-cart/store"
 
 export const ContextExample = createContext()
 
@@ -220,19 +228,18 @@ export default function App() {
       </details>
       <h3>11. Food Recipe</h3>
       <div>
+        <li>Router: 创建router</li>
+        <li>NavLink: 创建Nav bar</li>
+        <li>
+          createContext / useContext:
+          各个component之间共享state，各自按需useContext
+        </li>
+        <li>
+          useParam: 用于获取当前路由参数的值，用来访问和使用URL中的动态参数。
+        </li>
+        <li>useNavigate: 用来自动跳转到某个界面</li>
+        <li>Link: 创建link</li>
         <FoodRecipeState>
-          <li>Router: 创建router</li>
-          <li>NavLink: 创建Nav bar</li>
-          <li>
-            createContext / useContext:
-            各个component之间共享state，各自按需useContext
-          </li>
-          <li>
-            useParam: 用于获取当前路由参数的值，用来访问和使用URL中的动态参数。
-          </li>
-          <li>useNavigate: 用来自动跳转到某个界面</li>
-          <li>Link: 创建link</li>
-
           <div>
             <Navbar />
             <Routes>
@@ -242,6 +249,20 @@ export default function App() {
             </Routes>
           </div>
         </FoodRecipeState>
+      </div>
+      <h3>12. Shopping Cart (Redux Toolkit)</h3>
+      <div>
+        {/* <Provider store={store}> */}
+        {/* <NavbarShopping /> */} {/* 当然用navbar效果更好 */}
+        <Link to="/">Home </Link> <br />
+        <Link to="/login">Login</Link> <br />
+        <Link to="/contact">Contact</Link> <br />
+        <Routes>
+          <Route path="/" element={<HomeShopping />} />
+          <Route path="/login" element={<LoginShopping />} />
+          <Route path="/contact" element={<ContactShopping />} />
+        </Routes>
+        {/* </Provider> */}
       </div>
       <h2>Advanced JavaScript</h2>
       <details>

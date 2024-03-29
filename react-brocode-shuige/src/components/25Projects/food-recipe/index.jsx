@@ -14,7 +14,7 @@ export default function Navbar() {
       </NavLink>
 
       <form onSubmit={handleSubmit}>
-        <input
+        <input 
           type="text"
           name="search"
           value={searchParam.value}
