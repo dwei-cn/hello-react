@@ -5,8 +5,8 @@ import { useSignals } from "@preact/signals-react/runtime"
 import ItemCard from "../item-card"
 
 export default function HomeShopping() {
-  const username = useSelector((state) => state.user.username) // configureStore里面的key
-  const totalScore = useSelector((state) => state.user.totalScore) // configureStore里面的key
+  const username = useSelector((state) => state.shopping.username) // configureStore里面的key
+  const totalScore = useSelector((state) => state.shopping.totalScore) // configureStore里面的key
 
   const products = useSignal([])
   const loading = useSignal(false)
@@ -45,18 +45,13 @@ export default function HomeShopping() {
       <h4>Your Total Score is : {totalScore}</h4>
       <div
         style={{
-          display: "flex",
-        //   gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-        //   gap: "25px",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+          gap: "25px",
         }}
       >
         {products.value && products.value.length > 0 ? (
-          <div>
-            {" "}
-            {products.value.map((item) => (
-              <ItemCard item={item} />
-            ))}
-          </div>
+          products.value.map((item) => <ItemCard item={item} />)
         ) : (
           <div>Loading</div>
         )}

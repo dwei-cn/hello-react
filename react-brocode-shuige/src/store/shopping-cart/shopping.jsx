@@ -9,7 +9,7 @@ const initialState = {
   totalPrice: 0,
 }
 
-const userSlice = createSlice({
+const shoppingSlice = createSlice({
   name: "随便叫啥都行",
   initialState: initialState,
   reducers: {
@@ -51,12 +51,12 @@ const userSlice = createSlice({
         0
       )
     },
-    cleanCart: (state) => {
+    clearCart: (state) => {
       state.cart = initialState.cart
     },
   },
 })
 
-export const userSliceAction = userSlice.actions
+export const shoppingSliceAction = shoppingSlice.actions
 
-export default userSlice
+export default shoppingSlice

@@ -2,18 +2,18 @@ import React from "react"
 import ItemCard from "../item-card"
 
 import { useSelector, useDispatch } from "react-redux"
-import { userSliceAction } from "../../../../store/shopping-cart/user"
+import { shoppingSliceAction } from "../../../../store/shopping-cart/shopping"
 
 export default function CartShopping() {
   const dispatch = useDispatch()
-  const cartList = useSelector((state) => state.user.cart) // configureStore里面的key
-  const totalItemCountLocal = useSelector((state) => state.user.totalItemCount) // configureStore里面的key
-  const totalPriceLocal = useSelector((state) => state.user.totalPrice) // configureStore里面的key
+  const cartList = useSelector((state) => state.shopping.cart) // configureStore里面的key
+  const totalItemCountLocal = useSelector((state) => state.shopping.totalItemCount) // configureStore里面的key
+  const totalPriceLocal = useSelector((state) => state.shopping.totalPrice) // configureStore里面的key
 
-  const handleCleanCart = () => {
-    dispatch(userSliceAction.cleanCart())
-    dispatch(userSliceAction.countItems())
-    dispatch(userSliceAction.calTotalItemPrice())
+  const handleClearCart = () => {
+    dispatch(shoppingSliceAction.clearCart())
+    dispatch(shoppingSliceAction.countItems())
+    dispatch(shoppingSliceAction.calTotalItemPrice())
     console.log(cartList, totalItemCountLocal, totalPriceLocal)
   }
 
@@ -23,16 +23,20 @@ export default function CartShopping() {
       <span>Items: {totalItemCountLocal}</span> <br />
       <span>Total Price: {totalPriceLocal}</span> <br />
       <br />
-      {cartList && cartList.length > 0 ? (
-        <div>
-          {cartList.map((item) => (
-            <ItemCard item={item} />
-          ))}
-          <button onClick={handleCleanCart}>Clean Cart</button>
-        </div>
-      ) : (
-        <div>Add some items to the cart 😁...</div>
-      )}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+          gap: "25px",
+        }}
+      >
+        {cartList && cartList.length > 0 ? (
+          cartList.map((item) => <ItemCard item={item} />)
+        ) : (
+          <div>Add some items to the cart 😁...</div>
+        )}
+      </div>
+      <button onClick={handleClearCart}>Clear Cart</button>
     </div>
   )
 }

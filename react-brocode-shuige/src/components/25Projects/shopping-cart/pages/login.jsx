@@ -2,14 +2,14 @@ import React from "react"
 import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 
-import { userSliceAction } from "../../../../store/shopping-cart/user"
+import { shoppingSliceAction } from "../../../../store/shopping-cart/shopping"
 import { useSelector, useDispatch } from "react-redux"
 
 export default function LoginShopping() {
   const userName = useSignal("")
   const dispatch = useDispatch()
   //   const username = useSelector((state) => state.user.value.username)
-  const username = useSelector((state) => state.user.username) // configureStore里面的key
+  const username = useSelector((state) => state.shopping.username) // configureStore里面的key
 
   useSignals()
 
@@ -23,11 +23,11 @@ export default function LoginShopping() {
       />{" "}
       <br />
       <br />
-      <button onClick={() => dispatch(userSliceAction.login(userName.value))}>
+      <button onClick={() => dispatch(shoppingSliceAction.login(userName.value))}>
         Login
       </button>{" "}
       <br />
-      <button onClick={() => dispatch(userSliceAction.logout())}>Logout</button>
+      <button onClick={() => dispatch(shoppingSliceAction.logout())}>Logout</button>
     </div>
   )
 }

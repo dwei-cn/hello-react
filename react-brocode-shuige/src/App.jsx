@@ -270,13 +270,13 @@ export default function App() {
         <Link to="/">Home </Link> <br />
         <Link to="/login">Login</Link> <br />
         <Link to="/score">Score</Link> <br />
-        <Link to="/contact">Contact</Link> <br />
+        {/* <Link to="/contact">Contact</Link> <br /> */}
         <Link to="/cart">Cart</Link> <br />
         <Routes>
           <Route path="/" element={<HomeShopping />} />
           <Route path="/login" element={<LoginShopping />} />
           <Route path="/score" element={<Score />} />
-          <Route path="/contact" element={<ContactShopping />} />
+          {/* <Route path="/contact" element={<ContactShopping />} /> */}
           <Route path="/cart" element={<CartShopping />} />
         </Routes>
         {/* </Provider> */}

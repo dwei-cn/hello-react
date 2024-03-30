@@ -7,14 +7,14 @@ import { configureStore } from "@reduxjs/toolkit"
 import authSlice from "./redux-component/auth"
 import mySlice1 from "./redux-component/myweb1"
 import mySlice2 from "./redux-component/myweb2"
-import userSlice from "./shopping-cart/user"
+import shoppingSlice from "./shopping-cart/shopping"
 
 const store = configureStore({
   reducer: {
     myweb1: mySlice1.reducer,
     myweb2: mySlice2.reducer,
     auth: authSlice.reducer,
-    user: userSlice.reducer,
+    shopping: shoppingSlice.reducer,
   },
 })
 

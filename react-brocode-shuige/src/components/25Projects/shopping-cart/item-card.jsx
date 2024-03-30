@@ -2,26 +2,26 @@ import React, { useContext } from "react"
 // import { Link } from "react-router-dom"
 import { useSignals } from "@preact/signals-react/runtime"
 
-import { userSliceAction } from "../../../store/shopping-cart/user"
+import { shoppingSliceAction } from "../../../store/shopping-cart/shopping"
 import { useSelector, useDispatch } from "react-redux"
 
 export default function ItemCard({ item }) {
   const dispatch = useDispatch()
-  const cartList = useSelector((state) => state.user.cart) // configureStore里面的key
-  const totalItemCountLocal = useSelector((state) => state.user.totalItemCount) // configureStore里面的key
-  const totalPriceLocal = useSelector((state) => state.user.totalPrice) // configureStore里面的key
+  const cartList = useSelector((state) => state.shopping.cart) // configureStore里面的key
+  const totalItemCountLocal = useSelector((state) => state.shopping.totalItemCount) // configureStore里面的key
+  const totalPriceLocal = useSelector((state) => state.shopping.totalPrice) // configureStore里面的key
 
   const handleAddToCart = (item) => {
-    dispatch(userSliceAction.addToCart(item))
-    dispatch(userSliceAction.countItems())
-    dispatch(userSliceAction.calTotalItemPrice())
+    dispatch(shoppingSliceAction.addToCart(item))
+    dispatch(shoppingSliceAction.countItems())
+    dispatch(shoppingSliceAction.calTotalItemPrice())
     console.log(cartList, totalItemCountLocal, totalPriceLocal)
   }
 
   const handleRemoveFromCart = (item) => {
-    dispatch(userSliceAction.removeFromCart(item))
-    dispatch(userSliceAction.countItems())
-    dispatch(userSliceAction.calTotalItemPrice())
+    dispatch(shoppingSliceAction.removeFromCart(item))
+    dispatch(shoppingSliceAction.countItems())
+    dispatch(shoppingSliceAction.calTotalItemPrice())
     console.log(cartList, totalItemCountLocal, totalPriceLocal)
   }
 
@@ -46,13 +46,12 @@ export default function ItemCard({ item }) {
       <span>
         <p>{item.category}</p>
         <h3>{item.title}</h3>
-
         <p>Price: ${item.price}</p>
         {/* {item.id.toString().slice(-5)}  */}
         {/* {favList.value && favList.value[item.id] && "❤️"} */}
         <br />
         <br />
-        {/* 查看item.id是否在cartList中，判断是否已经存在于cart */}
+        {/* 查看item.id是否在cartList中，判断是否已经存在于cart */}{" "}
         {cartList.some((cartItem) => cartItem.id === item.id) ? (
           <button onClick={() => handleRemoveFromCart(item)}>
             Remove from Cart
@@ -60,7 +59,6 @@ export default function ItemCard({ item }) {
         ) : (
           <button onClick={() => handleAddToCart(item)}>Add to Cart</button>
         )}
-
         {/* <Link
           to={`/recipe-item/${item?.id}`}
           style={{

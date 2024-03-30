@@ -2,14 +2,14 @@ import React from "react"
 import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 
-import { userSliceAction } from "../../../../store/shopping-cart/user"
+import { shoppingSliceAction } from "../../../../store/shopping-cart/shopping"
 import { useSelector, useDispatch } from "react-redux"
 
 export default function Score() {
   const score = useSignal(0)
   const dispatch = useDispatch()
-  const scoreLocal = useSelector((state) => state.user.score) // configureStore里面的key
-  const totalScoreLocal = useSelector((state) => state.user.totalScore) // configureStore里面的key
+  const scoreLocal = useSelector((state) => state.shopping.score) // configureStore里面的key
+  const totalScoreLocal = useSelector((state) => state.shopping.totalScore) // configureStore里面的key
 
   useSignals()
 
@@ -25,22 +25,22 @@ export default function Score() {
       <br />
       <br />
       <button
-        onClick={() => dispatch(userSliceAction.submitScore(score.value))}
+        onClick={() => dispatch(shoppingSliceAction.submitScore(score.value))}
       >
         Submit
       </button>{" "}
       <br />
       <button
-        onClick={() => dispatch(userSliceAction.calTotalScore(scoreLocal))}
+        onClick={() => dispatch(shoppingSliceAction.calTotalScore(scoreLocal))}
       >
         Calculate Total Score
       </button>
       <br />
-      <button onClick={() => dispatch(userSliceAction.resetScore())}>
+      <button onClick={() => dispatch(shoppingSliceAction.resetScore())}>
         Reset Score
       </button>
       <br />
-      <button onClick={() => dispatch(userSliceAction.resetAll())}>
+      <button onClick={() => dispatch(shoppingSliceAction.resetAll())}>
         Reset All
       </button>
     </div>
