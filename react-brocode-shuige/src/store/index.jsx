@@ -4,13 +4,12 @@
 // 分片管理，只导入slice
 
 import { configureStore } from "@reduxjs/toolkit"
-import authSlice from "./auth"
-import mySlice1 from "./myweb1"
-import mySlice2 from "./myweb2"
-import userSlice from "./user"
+import authSlice from "./redux-component/auth"
+import mySlice1 from "./redux-component/myweb1"
+import mySlice2 from "./redux-component/myweb2"
+import userSlice from "./shopping-cart/user"
 
 const store = configureStore({
-  // reducer: mywebSlice.reducer,
   reducer: {
     myweb1: mySlice1.reducer,
     myweb2: mySlice2.reducer,

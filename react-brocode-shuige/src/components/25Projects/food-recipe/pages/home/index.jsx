@@ -18,9 +18,7 @@ export default function HomePage() {
       }}
     >
       {recipeList.value && recipeList.value.length > 0 ? (
-        recipeList.value.map((item) => (
-          <ItemCard item={item} />
-        ))
+        recipeList.value.map((item) => <ItemCard item={item} />)
       ) : (
         <div>Nothing to show...</div>
       )}

@@ -34,7 +34,9 @@ import FoodRecipeState from "./components/25Projects/food-recipe/context"
 import NavbarShopping from "./components/25Projects/shopping-cart"
 import HomeShopping from "./components/25Projects/shopping-cart/pages/home"
 import LoginShopping from "./components/25Projects/shopping-cart/pages/login"
-import ContactShopping from "./components/25Projects/shopping-cart/pages/Contact"
+import CartShopping from "./components/25Projects/shopping-cart/pages/cart"
+import ContactShopping from "./components/25Projects/shopping-cart/pages/contact"
+import Score from "./components/25Projects/shopping-cart/pages/score"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -59,7 +61,7 @@ import UseFetchComp from "./components/UseFetchComp"
 import ReduxToolkitComp from "./components/ReduxToolkitComp"
 
 import { Routes, Route, Link } from "react-router-dom"
-import { Provider } from "react-redux"
+// import { Provider } from "react-redux"
 // import { store } from "./components/25Projects/shopping-cart/store"
 
 export const ContextExample = createContext()
@@ -251,16 +253,31 @@ export default function App() {
         </FoodRecipeState>
       </div>
       <h3>12. Shopping Cart (Redux Toolkit)</h3>
+      <li>configureStore配置reducer, 然后将在main.jsx中将APP包裹住</li>
+      <li>
+        单独每个file createSlice，定义initialState,
+        创建reducers，在redux中，任何改变state的function就叫reducer
+      </li>
+      <li>state就是每个initial state定义的那些全局状态</li>
+      <li>action.payload可以理解为参数</li>
+      <li>需要userSliceAction来引入reducer</li>
+      <li>需要useSelector，useDispatch来引入state和reducer</li>
+      <br />
       <div>
         {/* <Provider store={store}> */}
-        {/* <NavbarShopping /> */} {/* 当然用navbar效果更好 */}
+        {/* <NavbarShopping /> */}
+        {/* 当然用navbar效果更好 */}
         <Link to="/">Home </Link> <br />
         <Link to="/login">Login</Link> <br />
+        <Link to="/score">Score</Link> <br />
         <Link to="/contact">Contact</Link> <br />
+        <Link to="/cart">Cart</Link> <br />
         <Routes>
           <Route path="/" element={<HomeShopping />} />
           <Route path="/login" element={<LoginShopping />} />
+          <Route path="/score" element={<Score />} />
           <Route path="/contact" element={<ContactShopping />} />
+          <Route path="/cart" element={<CartShopping />} />
         </Routes>
         {/* </Provider> */}
       </div>

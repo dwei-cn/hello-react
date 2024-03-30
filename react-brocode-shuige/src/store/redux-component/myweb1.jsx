@@ -15,7 +15,7 @@ const initialState1 = {
 // add initial state to slice
 // slice一般包括initial state和actions/reducers
 const mySlice1 = createSlice({
-  name: "myweb1",
+  name: "ss",
   initialState: initialState1,
   reducers: {
     // state就是initialstate的值

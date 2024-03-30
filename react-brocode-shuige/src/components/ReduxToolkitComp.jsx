@@ -1,9 +1,9 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux" // 用俩hook来调取state和functions
-import { mywebActions1 } from "../store/myweb1" // 调取reducers/actions
-import { mywebActions2 } from "../store/myweb2" // 调取reducers/actions
-import { authActions } from "../store/auth" // 非default export而是named exports，要用{}
-import { loadData } from "../store/asyncDemo"
+import { mywebActions1 } from "../store/redux-component/myweb1" // 调取reducers/actions
+import { mywebActions2 } from "../store/redux-component/myweb2" // 调取reducers/actions
+import { authActions } from "../store/redux-component/auth" // 非default export而是named exports，要用{}
+import { loadData } from "../store/redux-component/asyncDemo"
 
 export default function ReduxToolkitComp() {
   // 调用state
