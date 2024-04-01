@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ItemCard from "../item-card"
 
 import { useSelector, useDispatch } from "react-redux"
@@ -7,19 +7,23 @@ import { shoppingSliceAction } from "../../../../store/shopping-cart/shopping"
 export default function CartShopping() {
   const dispatch = useDispatch()
   const cartList = useSelector((state) => state.shopping.cart) // configureStore里面的key
-  const totalItemCountLocal = useSelector((state) => state.shopping.totalItemCount) // configureStore里面的key
+  const totalItemCountLocal = useSelector(
+    (state) => state.shopping.totalItemCount
+  ) // configureStore里面的key
   const totalPriceLocal = useSelector((state) => state.shopping.totalPrice) // configureStore里面的key
 
   const handleClearCart = () => {
     dispatch(shoppingSliceAction.clearCart())
-    dispatch(shoppingSliceAction.countItems())
-    dispatch(shoppingSliceAction.calTotalItemPrice())
-    console.log(cartList, totalItemCountLocal, totalPriceLocal)
+    // dispatch(shoppingSliceAction.countItems())
+    // dispatch(shoppingSliceAction.calTotalItemPrice())
   }
+
+
 
   return (
     <div>
       <br />
+      <h4>Your Cart Summary</h4>
       <span>Items: {totalItemCountLocal}</span> <br />
       <span>Total Price: {totalPriceLocal}</span> <br />
       <br />

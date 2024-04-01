@@ -267,13 +267,13 @@ export default function App() {
         {/* <Provider store={store}> */}
         {/* <NavbarShopping /> */}
         {/* 当然用navbar效果更好 */}
-        <Link to="/">Home </Link> <br />
+        <Link to="/home">Home </Link> <br />
         <Link to="/login">Login</Link> <br />
         <Link to="/score">Score</Link> <br />
         {/* <Link to="/contact">Contact</Link> <br /> */}
         <Link to="/cart">Cart</Link> <br />
         <Routes>
-          <Route path="/" element={<HomeShopping />} />
+          <Route path="/home" element={<HomeShopping />} />
           <Route path="/login" element={<LoginShopping />} />
           <Route path="/score" element={<Score />} />
           {/* <Route path="/contact" element={<ContactShopping />} /> */}

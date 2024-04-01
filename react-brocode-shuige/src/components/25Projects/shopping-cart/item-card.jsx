@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useEffect } from "react"
 // import { Link } from "react-router-dom"
 import { useSignals } from "@preact/signals-react/runtime"
 
@@ -8,22 +8,31 @@ import { useSelector, useDispatch } from "react-redux"
 export default function ItemCard({ item }) {
   const dispatch = useDispatch()
   const cartList = useSelector((state) => state.shopping.cart) // configureStore里面的key
-  const totalItemCountLocal = useSelector((state) => state.shopping.totalItemCount) // configureStore里面的key
+  const totalItemCountLocal = useSelector(
+    (state) => state.shopping.totalItemCount
+  ) // configureStore里面的key
   const totalPriceLocal = useSelector((state) => state.shopping.totalPrice) // configureStore里面的key
 
   const handleAddToCart = (item) => {
     dispatch(shoppingSliceAction.addToCart(item))
-    dispatch(shoppingSliceAction.countItems())
-    dispatch(shoppingSliceAction.calTotalItemPrice())
-    console.log(cartList, totalItemCountLocal, totalPriceLocal)
+    // dispatch(shoppingSliceAction.countItems())
+    // dispatch(shoppingSliceAction.calTotalItemPrice())
+    // console.log(cartList, totalItemCountLocal, totalPriceLocal)
   }
 
   const handleRemoveFromCart = (item) => {
     dispatch(shoppingSliceAction.removeFromCart(item))
+    // dispatch(shoppingSliceAction.countItems())
+    // dispatch(shoppingSliceAction.calTotalItemPrice())
+    // console.log(cartList, totalItemCountLocal, totalPriceLocal)
+  }
+
+  // useeffect里面也能dispatch
+  useEffect(() => {
     dispatch(shoppingSliceAction.countItems())
     dispatch(shoppingSliceAction.calTotalItemPrice())
     console.log(cartList, totalItemCountLocal, totalPriceLocal)
-  }
+  }, [cartList])
 
   useSignals()
   return (

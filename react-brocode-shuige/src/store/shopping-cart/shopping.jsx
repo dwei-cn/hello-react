@@ -33,11 +33,7 @@ const shoppingSlice = createSlice({
       Object.assign(state, initialState)
     },
     addToCart: (state, action) => {
-      // Store relevant data (e.g., IDs) in the cart
-      // console.log(action.payload)
-      if (!state.cart[action.payload.id]) {
-        state.cart.push(action.payload)
-      } // Assuming action.payload is an object}
+      state.cart.push(action.payload)
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload.id)
@@ -50,6 +46,7 @@ const shoppingSlice = createSlice({
         (total, item) => total + item.price,
         0
       )
+      state.totalPrice = state.totalPrice.toFixed(2)
     },
     clearCart: (state) => {
       state.cart = initialState.cart

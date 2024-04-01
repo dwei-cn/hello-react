@@ -11,6 +11,10 @@ export default function HomeShopping() {
   const products = useSignal([])
   const loading = useSignal(false)
 
+  const totalItemCountLocal = useSelector(
+    (state) => state.shopping.totalItemCount
+  ) // configureStore里面的key
+
   async function fetchListOfProducts() {
     loading.value = true
     try {
@@ -43,6 +47,7 @@ export default function HomeShopping() {
     <div>
       <h4>This is Home Page -- {username}</h4>
       <h4>Your Total Score is : {totalScore}</h4>
+      <p>Added to Cart: {totalItemCountLocal}</p>
       <div
         style={{
           display: "grid",
