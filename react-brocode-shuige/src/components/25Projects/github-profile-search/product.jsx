@@ -3,8 +3,7 @@ import RatingStars from "./ratingStars" // 导入星级评分组件
 import StarRating from "./starRating"
 import ImgNav from "./imgNav"
 
-import { ratingValue } from "./StarRating"
-
+import { ratingValue } from "./starRating"
 
 import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
@@ -30,7 +29,6 @@ export default function Product({ product, resetStatusRatingGit }) {
     resetStatusRating.value = !resetStatusRating.value
 
     console.log(ratingUI.value)
-  
   }
 
   useSignals()

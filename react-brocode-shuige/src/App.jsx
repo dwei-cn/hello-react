@@ -18,7 +18,7 @@ import GithubProfileSearch from "./components/25Projects/github-profile-search/g
 import Loadmore from "./components/25Projects/load-more/loadmore"
 import Tabs from "./components/25Projects/tabs/tabs"
 import FortuneWheel from "./components/25Projects/fortune-wheel/fortuneWheel"
-import Modalpopups from "./components/25Projects/modal-popups/modalpopups"
+import Modalpopups from "./components/25Projects/modal-popups/modalPopups"
 import UseFetchHookTest from "./components/25Projects/use-fetch/test"
 import ReactHooksExplained from "./components/25Projects/react-hooks"
 import UseOnclickOutsideTest from "./components/25Projects/use-outsite-click-hook"
@@ -37,6 +37,8 @@ import LoginShopping from "./components/25Projects/shopping-cart/pages/login"
 import CartShopping from "./components/25Projects/shopping-cart/pages/cart"
 import ContactShopping from "./components/25Projects/shopping-cart/pages/contact"
 import Score from "./components/25Projects/shopping-cart/pages/score"
+
+import AutoComplete from "./components/material-ui/auto-complete"
 
 import Card from "./components/Card"
 import List from "./components/List"
@@ -63,6 +65,8 @@ import ReduxToolkitComp from "./components/ReduxToolkitComp"
 import { Routes, Route, Link } from "react-router-dom"
 // import { Provider } from "react-redux"
 // import { store } from "./components/25Projects/shopping-cart/store"
+
+import { Typography } from "@mui/material"
 
 export const ContextExample = createContext()
 
@@ -294,6 +298,9 @@ export default function App() {
         <summary>展开全部</summary>
         <ReactHooksExplained />
       </details>
+      <h2>Material UI</h2>
+      <Typography variant="h5">Hello MUI!</Typography>
+      <AutoComplete />
       <hr />
       <div ref={bottomRef} />
       <Footer />
