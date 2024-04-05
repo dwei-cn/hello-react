@@ -29,6 +29,7 @@ const ExpandMore = styled((props) => {
 
 export default function ItemCard() {
   const [expanded, setExpanded] = React.useState(false)
+  const [value, setValue] = React.useState(2)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -73,7 +74,16 @@ export default function ItemCard() {
         >
           $35,000
         </Typography>
-        <Rating name="read-only" value={4.5} readOnly />
+        {/* <Rating name="read-only" value={4.5} readOnly /> */}
+        <Rating
+          name="simple-controlled"
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue)
+          }}
+          precision={0.5}
+          max={6}
+        />
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">

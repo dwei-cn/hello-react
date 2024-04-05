@@ -2,6 +2,8 @@ import React from "react"
 import AutoComplete from "./components/auto-complete"
 import BasicButtons from "./components/button"
 import ItemCard from "./components/item-card"
+import DataGridDemo from "./components/data-grid"
+import ListDemo from "./components/list-demo"
 
 import { Typography } from "@mui/material"
 
@@ -15,6 +17,10 @@ export default function MUIComponents() {
       <BasicButtons />
       <h4>Card</h4>
       <ItemCard />
+      <h4>Data Grid</h4>
+      <DataGridDemo />
+      <h4>List Demo</h4>
+      <ListDemo />
     </div>
   )
 }
