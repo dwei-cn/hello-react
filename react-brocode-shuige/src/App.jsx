@@ -38,8 +38,6 @@ import CartShopping from "./components/25Projects/shopping-cart/pages/cart"
 import ContactShopping from "./components/25Projects/shopping-cart/pages/contact"
 import Score from "./components/25Projects/shopping-cart/pages/score"
 
-import AutoComplete from "./components/material-ui/auto-complete"
-
 import Card from "./components/Card"
 import List from "./components/List"
 import Button from "./components/Button"
@@ -66,8 +64,7 @@ import { Routes, Route, Link } from "react-router-dom"
 // import { Provider } from "react-redux"
 // import { store } from "./components/25Projects/shopping-cart/store"
 
-import { Typography } from "@mui/material"
-
+import MUIComponents from "./components/material-ui"
 export const ContextExample = createContext()
 
 export default function App() {
@@ -274,10 +271,11 @@ export default function App() {
         <Link to="/home">Home </Link> <br />
         <Link to="/login">Login</Link> <br />
         <Link to="/score">Score</Link> <br />
+        <Link to="/shop">Shop</Link> <br />
         {/* <Link to="/contact">Contact</Link> <br /> */}
         <Link to="/cart">Cart</Link> <br />
         <Routes>
-          <Route path="/home" element={<HomeShopping />} />
+          <Route path="/shop" element={<HomeShopping />} />
           <Route path="/login" element={<LoginShopping />} />
           <Route path="/score" element={<Score />} />
           {/* <Route path="/contact" element={<ContactShopping />} /> */}
@@ -299,8 +297,7 @@ export default function App() {
         <ReactHooksExplained />
       </details>
       <h2>Material UI</h2>
-      <Typography variant="h5">Hello MUI!</Typography>
-      <AutoComplete />
+      <MUIComponents />
       <hr />
       <div ref={bottomRef} />
       <Footer />
