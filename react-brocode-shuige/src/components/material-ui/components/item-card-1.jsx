@@ -27,7 +27,7 @@ const ExpandMore = styled((props) => {
   }),
 }))
 
-export default function ItemCard() {
+export default function ItemCardOne() {
   const [expanded, setExpanded] = React.useState(false)
   const [value, setValue] = React.useState(2)
 

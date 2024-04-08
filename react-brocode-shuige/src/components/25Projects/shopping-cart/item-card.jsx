@@ -8,10 +8,10 @@ import { useSelector, useDispatch } from "react-redux"
 export default function ItemCard({ item }) {
   const dispatch = useDispatch()
   const cartList = useSelector((state) => state.shopping.cart) // configureStore里面的key
-  const totalItemCountLocal = useSelector(
-    (state) => state.shopping.totalItemCount
-  ) // configureStore里面的key
-  const totalPriceLocal = useSelector((state) => state.shopping.totalPrice) // configureStore里面的key
+  // const totalItemCountLocal = useSelector(
+  //   (state) => state.shopping.totalItemCount
+  // ) // configureStore里面的key
+  // const totalPriceLocal = useSelector((state) => state.shopping.totalPrice) // configureStore里面的key
 
   const handleAddToCart = (item) => {
     dispatch(shoppingSliceAction.addToCart(item))
@@ -31,7 +31,7 @@ export default function ItemCard({ item }) {
   useEffect(() => {
     dispatch(shoppingSliceAction.countItems())
     dispatch(shoppingSliceAction.calTotalItemPrice())
-    console.log(cartList, totalItemCountLocal, totalPriceLocal)
+    // console.log(cartList, totalItemCountLocal, totalPriceLocal)
   }, [cartList])
 
   useSignals()

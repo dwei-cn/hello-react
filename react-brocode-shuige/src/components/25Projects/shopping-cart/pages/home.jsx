@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { signal, useSignal, useSignalEffect } from "@preact/signals-react"
 import { useSignals } from "@preact/signals-react/runtime"
 import ItemCard from "../item-card"
+import ItemCardMUI from "../item-card-mui"
 
 export default function HomeShopping() {
   const username = useSelector((state) => state.shopping.username) // configureStore里面的key
@@ -52,11 +53,17 @@ export default function HomeShopping() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-          gap: "25px",
+          gap: "100px",
         }}
       >
         {products.value && products.value.length > 0 ? (
           products.value.map((item) => <ItemCard item={item} />)
+        ) : (
+          <div>Loading</div>
+        )}
+        <br />
+        {products.value && products.value.length > 0 ? (
+          products.value.map((item) => <ItemCardMUI item={item} />)
         ) : (
           <div>Loading</div>
         )}
