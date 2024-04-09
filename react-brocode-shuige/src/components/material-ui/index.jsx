@@ -5,6 +5,8 @@ import ItemCardOne from "./components/item-card-1"
 import ItemCardTwo from "./components/item-card-2"
 import DataGridDemo from "./components/data-grid"
 import ListDemo from "./components/list-demo"
+import SimpleDialogDemo from "./components/dialog-demo"
+import FormPropsTextFields from "./components/text-field"
 
 import { Typography } from "@mui/material"
 
@@ -24,6 +26,11 @@ export default function MUIComponents() {
       <DataGridDemo />
       <h4>List Demo</h4>
       <ListDemo />
+      <h4>Dialog Demo</h4>
+      <SimpleDialogDemo />
+      <h4>Form Props Text Fields</h4>
+      <FormPropsTextFields />
     </div>
+
   )
 }

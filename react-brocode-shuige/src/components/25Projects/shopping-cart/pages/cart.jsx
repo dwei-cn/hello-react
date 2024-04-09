@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import ItemCard from "../item-card"
+import ItemCardMUI from "../item-card-mui"
 
 import { useSelector, useDispatch } from "react-redux"
 import { shoppingSliceAction } from "../../../../store/shopping-cart/shopping"
@@ -31,15 +32,17 @@ export default function CartShopping() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-          gap: "25px",
+          gap: "150px",
         }}
       >
         {cartList && cartList.length > 0 ? (
-          cartList.map((item) => <ItemCard item={item} />)
+          // cartList.map((item) => <ItemCard item={item} />)
+          cartList.map((item) => <ItemCardMUI item={item} />)
         ) : (
           <div>Add some items to the cart 😁...</div>
         )}
       </div>
+      <br />
       <button onClick={handleClearCart}>Clear Cart</button>
     </div>
   )

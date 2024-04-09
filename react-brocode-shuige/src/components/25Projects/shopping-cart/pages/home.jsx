@@ -53,15 +53,15 @@ export default function HomeShopping() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-          gap: "100px",
+          gap: "150px",
         }}
       >
-        {products.value && products.value.length > 0 ? (
+        {/* {products.value && products.value.length > 0 ? (
           products.value.map((item) => <ItemCard item={item} />)
         ) : (
           <div>Loading</div>
         )}
-        <br />
+        <br /> */}
         {products.value && products.value.length > 0 ? (
           products.value.map((item) => <ItemCardMUI item={item} />)
         ) : (

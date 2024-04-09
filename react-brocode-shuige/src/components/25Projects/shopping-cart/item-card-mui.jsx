@@ -48,19 +48,19 @@ export default function ItemCardMUI({ item }) {
         <Card
             sx={
                 {
-                    width: 150,
+                    width: 200,
                     background: "lightblue",
                     borderColor: "black"
                 }}
         >
             <div>
-                <AspectRatio minHeight="120px" maxHeight="200px">
+                <AspectRatio minHeight="200px" maxHeight="300px">
                     <img
                         src={item.image}
                         // srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286&dpr=2 2x"
                         loading="lazy"
                         alt={item.title}
-                        sx={{ width: "30px" }}
+                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
                     />
                 </AspectRatio>
                 <Typography level="body-xs">{item.category}</Typography>
@@ -76,22 +76,43 @@ export default function ItemCardMUI({ item }) {
                 </IconButton> */}
             </div>
 
-            <CardContent orientation="horizontal">
+            {/* <CardContent orientation="horizontal"> */}
+            <CardContent orientation="vertical">
                 <div>
-                    <Typography level="body-xs"> Price:</Typography>
-                    <Typography fontSize="sm" fontWeight="lg">
-                        {item.price}
+                    <Typography level="body-md"> Price:{" "}
+                        <Typography fontSize="lg" fontWeight="lg">
+                            {item.price}
+                        </Typography>
                     </Typography>
+
                 </div>
-                <Button
-                    variant="solid"
-                    size="md"
-                    color="primary"
-                    aria-label="Explore Bahamas Islands"
-                    sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
-                >
-                    Add to Cart
-                </Button>
+
+                {cartList.some((cartItem) => cartItem.id === item.id) ? (
+                    <Button
+                        variant="solid"
+                        size="md"
+                        color="primary"
+                        aria-label="Add to cart"
+                        sx={{ mt: 'auto', alignSelf: 'flex', fontWeight: 600 }}
+                        onClick={() => handleRemoveFromCart(item)}
+                    >
+                        Remove from Cart
+                    </Button>
+
+                ) : (
+                    <Button
+                        variant="solid"
+                        size="md"
+                        color="primary"
+                        aria-label="Add to cart"
+                        sx={{ mt: 'auto', alignSelf: 'flex', fontWeight: 600 }}
+                        onClick={() => handleAddToCart(item)}
+                    >
+                        Add to Cart
+                    </Button>
+                )}
+
+
             </CardContent>
         </Card>
     );
